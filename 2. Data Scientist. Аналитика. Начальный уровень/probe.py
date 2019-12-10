@@ -16,6 +16,10 @@
 #
 # print(S)
 
-my_list = [1, 2, 3, 'apple', ['a', 'b', 'c']]
-print(my_list)
+# my_list = [1, 2, 3, 'apple', ['a', 'b', 'c']]
+# print(my_list)
 
+dig = list(range(1, 130))
+
+for i in dig:
+    print('120 % ', i, ' = ', 120 // i)
