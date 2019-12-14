@@ -97,21 +97,32 @@ L = [
 '''
 
 
-def watch_time():
-    seconds = int(input('Input seconds quantity: '))
-    hours = seconds // 3600
-    minutes = (seconds % (hours * 3600)) // 60
-    sec = (seconds % 60)
-
-    if minutes < 10:
-        minutes = '0' + str(minutes)
-
-    if sec < 10:
-        sec = '0' + str(sec)
-
-    print(hours, ':',  minutes, ':',  sec)
-
+# def watch_time():
+    # мое первоначальное решение
+#     seconds = int(input('Input seconds quantity: '))
+#     hours = seconds // 3600
+#     minutes = (seconds % (hours * 3600)) // 60
+#     sec = (seconds % 60)
+#
+#     if minutes < 10:
+#         minutes = '0' + str(minutes)
+#
+#     if sec < 10:
+#         sec = '0' + str(sec)
+#
+#     print(hours, ':',  minutes, ':',  sec)
+#
 # watch_time()
+
+# S = int(input('Введите секунды:'))
+# #  подсказанное решение преподавателя
+# hours = S // 3600 % 24
+# print(hours)
+# minutes = (S % 3600) // 60
+# print(minutes)
+# seconds = (S % 3600) % 60
+# print(seconds)
+# print(f'{hours}:{minutes // 10}{minutes % 10}:{seconds // 10}{seconds % 10}')
 
 
 '''
@@ -192,30 +203,36 @@ def digit_swap():
 '''
 
 
+# def days_for_dist():
+#     # мое решение
+#     km_per_day = int(input('Km by car D: '))
+#     distance = int(input('Distance to go P: '))
+#     days = (distance / km_per_day) + 1 * ((distance - 1) // km_per_day)
+#     # days_raw = days
+#     days = round(days)
+#     # days_str = days[0]
+#     # print(days_raw, days)
+#     print(days)
+
 def days_for_dist(km_per_day):
+    # решение после подсказки преподавателя
     # km_per_day = int(input('Km by car D: '))
-    # distance = int(input('Distance to go P: ')) '))
-    # km_per_day = 121
-    distance = 120 - 1
-    # days = (distance / km_per_day)
-    # rest = (distance % km_per_day) *
-    # print('rest: ', rest)
-    days = (distance / km_per_day) + 1 * (distance // km_per_day)
-    # days = (distance / km_per_day) + 1 * (distance // km_per_day)
-    # days = (distance / (km_per_day + 1)) + 1 * (distance // km_per_day)
-    #    days = round(days)
-    days_raw = days
-    days = round(days - 0.5)
-    # days_str = days[0]
-    return days_raw, days
+    # distance = int(input('Distance to go P: ))
+    # km_per_day = 105
+    distance = 120
+    days = distance // km_per_day
+    print(days)
 
 
-# days_for_dist()
+for i in range(100, 130, 1):
+    print(i, ' ', days_for_dist(i))
+
 
 # D_km_car = list(range(5, 220, 1))
 #
 # for d in D_km_car:
-#     result = days_for_dist(d)
+#     result = days_for_dist(d)105
+
 #     print(d, ':', result, '; ')
 
 
