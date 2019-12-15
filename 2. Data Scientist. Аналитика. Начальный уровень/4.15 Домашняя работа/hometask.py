@@ -202,31 +202,55 @@ def digit_swap():
 
 '''
 
+'''
+    советы с телеги:
+    days = math.ceil(distance / km_per_day)
+    distance // km_per_day + bool(distance % km_per_day)
+    bool - возвращает True или 1 если остаток от деления != 0
+    В смысле т.к.в питоне bool унаследован от int, и True имеет целочисленное прдеставление 1, а False 0, 
+    то при сложении получим + 1 или + 0
+'''
 
-# def days_for_dist():
-#     # мое решение
-#     km_per_day = int(input('Km by car D: '))
-#     distance = int(input('Distance to go P: '))
-#     days = (distance / km_per_day) + 1 * ((distance - 1) // km_per_day)
-#     # days_raw = days
-#     days = round(days)
-#     # days_str = days[0]
-#     # print(days_raw, days)
-#     print(days)
 
 def days_for_dist(km_per_day):
+    # km_per_day = int(input('Km by car D: '))
+    # distance = int(input('Distance to go P: '))
+    distance = 120
+    days = distance // km_per_day + bool(distance % km_per_day)
+    # days_raw = days
+    # days = round(days)
+    # days_str = days[0]
+    # print(days_raw, days)
+    # print(days)
+    return days
+
+# def days_for_dist():
+    # мое первоначальное решение
+    # km_per_day = int(input('Km by car D: '))
+    # distance = int(input('Distance to go P: '))
+    # days = (distance / km_per_day) + 1 * ((distance - 1) // km_per_day)
+    # # days_raw = days
+    # days = round(days)
+    # # days_str = days[0]
+    # # print(days_raw, days)
+    # print(days)
+
+
+# def days_for_dist(km_per_day):
     # решение после подсказки преподавателя
     # km_per_day = int(input('Km by car D: '))
     # distance = int(input('Distance to go P: ))
     # km_per_day = 105
-    distance = 120
-    days = distance // km_per_day
-    print(days)
+#     distance = 120
+#     days = distance // km_per_day
+#     print(days)
+#
+#
+for i in range(5, 250, 5):
+    result = days_for_dist(i)
+    print('120 / ', i, ' =', result)
 
-
-for i in range(100, 130, 1):
-    print(i, ' ', days_for_dist(i))
-
+# days_for_dist()
 
 # D_km_car = list(range(5, 220, 1))
 #
@@ -257,14 +281,10 @@ def avocado_price():
     kopeek_total = (rubles_r * 100 + kopeek_k) * avocado_n
     rubles_price = kopeek_total // 100
     kopeek_price = kopeek_total - rubles_price * 100
-    kopeek_price = str(kopeek_price)
 
-    if len(kopeek_price) == 1:
-        kopeek_price = '0' + kopeek_price
+    print(rubles_price, 'руб.', f'{kopeek_price // 10}{kopeek_price % 10}', 'коп.')
 
-    print(rubles_price, 'руб.', kopeek_price, 'коп.')
-
-# avocado_price()
+avocado_price()
 
 
 '''
