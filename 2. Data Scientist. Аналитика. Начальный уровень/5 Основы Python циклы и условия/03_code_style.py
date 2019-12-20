@@ -2,14 +2,15 @@
 
 # блоки кода
 
-x, y = 10, 29
+animals, y = 10, 29
 
 if x < 0:
     print('Х меньше нуля')
-    z = x**2 + y
+    z = x ** 2 + y
 else:
     print('Х больше нуля')
-    z = x - y
+
+z = x - y
 print('Результат', z)
 
 # ср. с С++
@@ -96,8 +97,8 @@ count_of_my_pets = 34
 if count_of_my_pets > 10:
     print('I need more space for my pets!')
 
-my_favorite_pets_and_bird = ['cat', 'wolf', 'ostrich']
-if 'lion' in my_favorite_pets_and_bird:
+animals_i_like = ['cat', 'wolf', 'ostrich']
+if 'lion' in animals_i_like:
     print('Wow!')
 
 MyFavoritePetsAndBirds = ['cat', 'wolf', 'ostrich']
