@@ -32,15 +32,20 @@
 #
 # func()
 
-integers = input('Input digits: ')
-integers = integers.split(',')
-integers = [int(i) for i in integers]
-print(integers, type(integers))
-i_max = integers[0]
-for i in integers:
-    if i > i_max:
-        i_max = i
-print('Maximum integer is ', i_max)
+
+def max_value():
+    """Function for defining maximum value in entered range of integers"""
+    integers = input('Input digits: ')
+    integers = integers.split(',')
+    integers = [int(i) for i in integers]
+    i_max = integers[0]
+    for i in integers:
+        if i > i_max:
+            i_max = i
+    print(f'Maximum integer is {i_max}')
+
+
+# max_value()
 
 
 
@@ -51,26 +56,135 @@ print('Maximum integer is ', i_max)
 Напишите программу, которая будет запрашивать на вход числа (каждое с новой строки) до тех пор, пока не будет введен ноль (0). На выход должно выводиться второе по величине значение.
 
 Ограничение: нельзя пользоваться готовой функцией для нахождения максимума (например, max()), готовыми функциями и методами сортировки (например, sort(),sorted()).
+'''
 
-### YOUR CODE HERE ###
-​
-​
+
+def get_integers():
+    """Function for getting integers from user and pack it in list"""
+    gotten_integers = []
+    while True:
+        integer = int(input('Input integer: '))
+        if integer == 0:
+            break
+        gotten_integers.append(integer)
+    return gotten_integers
+
+
+def max_value_fr_list(values_list):
+    """Function for defining maximum value in list"""
+    i_max = values_list[0]
+    for i in values_list:
+        if i > i_max:
+            i_max = i
+    return i_max
+
+
+# integers_list = get_integers()
+# initial_list = str(integers_list)
+# print(f'Received integers are: {integers_list}')
+# integers_list.remove(max_value_fr_list(values_list=integers_list))
+# print(f'Second maximum value in list {initial_list} is {max_value_fr_list(values_list=integers_list)}')
+
+
+
+'''
 3
 Напишите программу, которая принимает на вход год, а на выход выдает количество дней в этом году.
 
-### YOUR CODE HERE ###
-​
+'''
+
+
+def year_days(year):
+    """Function calculates quantity days in year"""
+    if year % 400 == 0:
+        print(f'{year} year is leap year with 366 days in it')
+    elif year % 100 == 0:
+        print(f'{year} year is reqular with 365 days in it')
+    elif year % 4 == 0:
+        print(f'{year} year is leap year with 366 days in it')
+    else:
+        print(f'{year} year is reqular with 365 days in it')
+
+
+# year_days(year=2000)
+# year_days(year=2100)
+# year_days(year=1600)
+
+
+'''
 ​
 4
 Напишите программу, которая на вход получает координаты двух клеток шахматной доски и выводит соощение о том, являются ли эти клетки одного цвета.
 
-### YOUR CODE HERE ###
+'''
+chess_letters = {
+    'a': 1,
+    'b': 2,
+    'c': 3,
+    'd': 4,
+    'e': 5,
+    'f': 6,
+    'g': 7,
+    'h': 8,
+}
+
+
+def chess_field_color(field):
+    """Function defines chess field color by it number"""
+    letter_value = chess_letters[field[0]]
+    if (letter_value + int(field[1])) % 2 == 0:
+        field_color = 'black'
+    else:
+        field_color = 'white'
+    return field_color
+
+
+def get_chess_field():
+    """Function get from user chess field number and check correction of input"""
+    while True:
+        field_number = input('Enter field:')
+        letter, digit = field_number[0], field_number[1]
+        if letter.isalpha() is False or digit.isdigit() is False:
+            print('Wrong format! Example: a1.')
+            continue
+        else:
+            return field_number
+
+
+# field_1 = chess_field_color(get_chess_field())
+# field_2 = chess_field_color(get_chess_field())
+#
+# if field_1 == field_2:
+#     print('Fields are equal')
+# else:
+#     print('Fields are not equal')
+
+
+'''
 ​
 ​
 5
 Напишите программу, которая на вход получает число, а на выходе сообщает, простое это число или составное.
 
-### YOUR CODE HERE ###
+'''
+
+
+def type_of_digit(digit):
+    """Function defines whether entered integer natural or composite"""
+    dividers = list(range(1, digit + 1))
+    counter = 0
+    for i in dividers:
+        if digit % i == 0:
+            counter += 1
+
+    if counter == 2:
+        print(f'Inserted integer {digit} is natural number.')
+    else:
+        print(f'Inserted integer {digit} is composite number.')
+
+
+# type_of_digit(2)
+'''
 ​
 ​
 6
