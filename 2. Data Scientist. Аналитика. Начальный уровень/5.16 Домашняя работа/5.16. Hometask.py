@@ -190,16 +190,109 @@ def type_of_digit(digit):
 6
 Напишите программу, которая на вход получает целое число больше 2 и выводит по нему его наименьший натуральный делитель, отличный от 1.
 
-### YOUR CODE HERE ###
-​
+'''
+# def the_least_divider(number):
+#     least_divider = 0
+#     for i in range(2, int(number)):
+#         if number % i == 0:
+#             least_divider = i
+#             if least_divider > 0:
+#                 print(f'The least divider for integer {number} is {least_divider}')
+#             break
+#     if least_divider == 0:
+#         print(f'There is no the least divider for integer {number}, other then 1')
+
+
+def the_least_divider():
+    """Function for calculating the least divider of integer"""
+    while True:
+        number = input('Enter integer bigger then 2: ')
+        if number.isdigit() is False:
+            print('Should be digit!')
+            continue
+        number = int(number)
+        if number <= 2:
+            print('Integer should be bigger then 2!')
+            continue
+        else:
+            least_divider = 0
+            for i in range(2, int(number)):
+                if number % i == 0:
+                    least_divider = i
+                    if least_divider > 0:
+                        print(f'The least divider for integer {number} is {least_divider}')
+                    break
+            if least_divider == 0:
+                print(f'There is no the least divider for integer {number}, other then 1')
+        return least_divider
+
+
+# for i in range(1, 36):
+#     the_least_divider(i)
+# the_least_divider()
+'''
 ​
 7
-Напишите программу, которая поможет составить план тренировок для подготовки к марафону. Она получает на вход число километров на планируемом марафоне, сколько пользователь планирует пробежать в первый день тренировок и на сколько процентов планирует увеличивать каждый день это расстояние. На выходе программа должна выдавать, сколько дней пользователю потребуется для того, чтобы подготовиться пробежать целевое количество километров.
+Напишите программу, которая поможет составить план тренировок для подготовки к марафону. Она получает на вход число 
+километров на планируемом марафоне, сколько пользователь планирует пробежать в первый день тренировок и на сколько 
+процентов планирует увеличивать каждый день это расстояние. На выходе программа должна выдавать, сколько дней 
+пользователю потребуется для того, чтобы подготовиться пробежать целевое количество километров.
 
 Ограничение: нельзя пользоваться функцией ceil() из модуля math и ее аналогами.
 
-### YOUR CODE HERE ###
-​
+'''
+params_dict = {}
+
+
+def get_params():
+    # params_dict = {
+    #     1: 'marathon distance',
+    #     2: 'first day training kilometers',
+    #     3: 'percent of daily training increase'
+    # }
+
+    # params_dict['marathon distance'] = input('Enter marathon distance: ')
+    params_dict['marathon distance'] = '10'
+    # params_dict['first day training kilometers'] = input('Enter first day training km: ')
+    params_dict['first day training kilometers'] = '1'
+    # params_dict['percent of daily training increase'] = input('Enter percent of daily training increase: ')
+    params_dict['percent of daily training increase'] = '100'
+    print(params_dict)
+
+    check = 0
+    while check < 3:
+        for item in params_dict.items():
+            if item[1].isdigit() is False:
+                # print(f'Parameter {item[0]} should be integer! Try again!')
+                params_dict[item[0]] = input(f'Parameter {item[0]} should be integer! Try again: ')
+                check = 0
+            else:
+                check += 1
+
+    print(params_dict, params_dict['marathon distance'])
+    return params_dict
+
+
+def training_plan(marathon_km, first_day_km, increase_percent_km):
+    # marathon_km = 5
+    daily_training = first_day_km
+    # increase_percent_km = 50
+    training_days = 1
+    while marathon_km > daily_training:
+        # augmentation of training kilometers depending on training days
+        whole_increase_km = training_days * (first_day_km * (increase_percent_km/100))
+        daily_training = first_day_km + whole_increase_km
+        training_days += 1
+    print(training_days)
+
+
+get_params()
+
+training_plan(marathon_km=int(params_dict['marathon distance']),
+              first_day_km=int(params_dict['first day training kilometers']),
+              increase_percent_km=int(params_dict['percent of daily training increase']))
+
+'''​
 ​
 8
 Напишите программу, которая на вход получает число n и считает по нему сумму 1²+2²+3²+...+n².
