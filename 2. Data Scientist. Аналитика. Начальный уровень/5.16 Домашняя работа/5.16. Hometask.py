@@ -4,12 +4,15 @@
 
 Домашняя работа
 
-Эта домашняя работа должна быть решена БЕЗ использования готовых функций (если именно они "решают" задачу) и сторонних библиотек. Используйте циклы и условия.
+Эта домашняя работа должна быть решена БЕЗ использования готовых функций (если именно они "решают" задачу) и сторонних
+библиотек. Используйте циклы и условия.
 
 1
-Напишите программу, которая будет запрашивать на вход числа (через запятую на одной строке) и выводить наибольшее значение из списка.
+Напишите программу, которая будет запрашивать на вход числа (через запятую на одной строке) и выводить наибольшее
+значение из списка.
 
-Ограничение: нельзя пользоваться готовой функцией для нахождения максимума (например, max()), готовыми функциями и методами сортировки (например, sort(),sorted()).'''
+Ограничение: нельзя пользоваться готовой функцией для нахождения максимума (например, max()), готовыми функциями и
+методами сортировки (например, sort(),sorted()).'''
 # import time
 
 # def time_of_function(function):
@@ -53,9 +56,11 @@ def max_value():
 
 '''
 2
-Напишите программу, которая будет запрашивать на вход числа (каждое с новой строки) до тех пор, пока не будет введен ноль (0). На выход должно выводиться второе по величине значение.
+Напишите программу, которая будет запрашивать на вход числа (каждое с новой строки) до тех пор, пока не будет введен 
+ноль (0). На выход должно выводиться второе по величине значение.
 
-Ограничение: нельзя пользоваться готовой функцией для нахождения максимума (например, max()), готовыми функциями и методами сортировки (например, sort(),sorted()).
+Ограничение: нельзя пользоваться готовой функцией для нахождения максимума (например, max()), готовыми функциями и 
+методами сортировки (например, sort(),sorted()).
 '''
 
 
@@ -114,7 +119,8 @@ def year_days(year):
 '''
 ​
 4
-Напишите программу, которая на вход получает координаты двух клеток шахматной доски и выводит соощение о том, являются ли эти клетки одного цвета.
+Напишите программу, которая на вход получает координаты двух клеток шахматной доски и выводит соощение о том, являются 
+ли эти клетки одного цвета.
 
 '''
 chess_letters = {
@@ -188,7 +194,8 @@ def type_of_digit(digit):
 ​
 ​
 6
-Напишите программу, которая на вход получает целое число больше 2 и выводит по нему его наименьший натуральный делитель, отличный от 1.
+Напишите программу, которая на вход получает целое число больше 2 и выводит по нему его наименьший натуральный делитель,
+ отличный от 1.
 
 '''
 # def the_least_divider(number):
@@ -332,7 +339,7 @@ def number_range_power():
 
 
 def number_range_factorial():
-    """Function for calculating sum of fdctorials of series integers"""
+    """Function for calculating sum of factorials of series integers"""
     number = ''
     while number.isdigit() is False:
         number = input('Enter positive integer: ')
@@ -355,7 +362,7 @@ def number_range_factorial():
     return summ
 
 
-number_range_factorial()
+# number_range_factorial()
 
 '''​
 ​
@@ -363,18 +370,109 @@ number_range_factorial()
 10
 Напишите программу, которая получает на вход последовательность чисел (каждое число с новой строки до того момента, 
 пока пользователь не введет 0) и считает количество четных элементов в последовательности.
+'''
 
-### YOUR CODE HERE ###
-​
-​
+# по ошибке сделал подсчет суммы элементов в последовательности
+
+# def even_integers_summ():
+#     """Function calculates sum of even integers series"""
+#     gotten_integers = []
+#     integer = ''
+#     while integer != 0:
+#         integer = int(input('Input integer: '))
+#         gotten_integers.append(integer)
+#     print(gotten_integers)
+#     summ = 0
+#     for i in gotten_integers:
+#         if i % 2 == 0:
+#             summ = summ + i
+#     print(summ)
+#     return summ
+
+# even_integers_summ()
+
+
+# правильное решение
+
+def even_integers_counter():
+    """Function calculates sum of even integers series"""
+    counter = 0
+    while 1:
+        integer = input('Input integer: ')
+        if integer.isdigit():
+            integer = int(integer)
+            if integer != 0 and integer % 2 == 0:
+                counter += 1
+                continue
+            elif integer != 0:
+                continue
+            else:
+                print(f'Counter: {counter}')
+                break
+        else:
+            print('Should be integer! Try again, please')
+            continue
+    print(f'Counter: {counter}')
+    return counter
+
+
+even_integers_counter()
+
+'''
+
 11
 Напишите программу, которая формирует список игроков женской команды по футболу. Программа должна записывать возраст и 
 пол претендента. Возраст должен запрашиваться после пола и только в том случае, если пол претендента женский. 
 Если пол претендента мужской, программа должна сообщать о том, что он не подходит. Возраст претенденток должен быть от 
 18 до 35 лет. Если кандидат удовлетворяет требованиям, должно появляться соответствующее сообщение.
 
-### YOUR CODE HERE ###
-​
+'''
+
+
+def female_football_team_form():
+    """Function creates list of female football team players"""
+
+    players = []
+    while 1:
+        name = input('Player\'s name: ')
+        sex = input('Player\'s sex (male / female): ')
+        if sex == 'female':
+            pass
+        else:
+            try_again_sex = input('Sorry, this team only for girls. Try again? y/n: ')
+            if try_again_sex == 'y':
+                continue
+            else:
+                print(f'Team players: {players}')
+                break
+
+
+        age = input('Player\'s age: ')
+        if age.isdigit() and 18 <= int(age) <= 35:
+            print("Player is successfully added to football team!")
+            player = [name, age]
+            players.append(player)
+        else:
+            try_again_age = input('Sorry, player\'s age is not suitable for restrictions. Try again? y/n: ')
+            if try_again_age == 'y':
+                continue
+            else:
+                print(f'Team players: {players}')
+                break
+
+        again = input('Do you want to add another player? y/n: ')
+        if again == 'y':
+            continue
+        else:
+            print(f'Team players: ')
+            [print(i) for i in players]
+            break
+
+
+# female_football_team_form()
+
+
+'''
 ​
 12
 Напишите программу, которая на вход получает максимальную ширину ромба и рисует его. Гарантируется, что входное число 
@@ -387,7 +485,11 @@ number_range_factorial()
 *****
  ***
   *
-### YOUR CODE HERE ###
+'''
+
+
+
+'''
 ​
 ​
 13
