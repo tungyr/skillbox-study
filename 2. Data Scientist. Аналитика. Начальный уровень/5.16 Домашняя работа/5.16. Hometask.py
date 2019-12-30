@@ -416,7 +416,7 @@ def even_integers_counter():
     return counter
 
 
-even_integers_counter()
+# even_integers_counter()
 
 '''
 
@@ -488,6 +488,31 @@ def female_football_team_form():
 '''
 
 
+def diamond():
+    while 1:
+        width = input('Enter odd integer: ')
+        if width.isdigit() is False:
+            print('Should be integer! Try again')
+            continue
+        elif int(width) % 2 == 0:
+            print('Should be ODD integer! Try again')
+            continue
+        else:
+            width = int(width)
+            star = '*'
+            space = ' ' * (width // 2)
+            print('a', space, 'b')
+
+            for i in range(1, width + 1):
+                print((space * (width - ((width + 1) // 2))) + star * (width  i
+
+                      + star * i)
+                space = ' ' * (width // 2 - 1)
+            break
+
+
+
+diamond()
 
 '''
 ​
