@@ -489,30 +489,33 @@ def female_football_team_form():
 
 
 def diamond():
+    """Function creates diamond from inserted symbols"""
+    symbol = input('Insert any symbol: ')
     while 1:
         width = input('Enter odd integer: ')
         if width.isdigit() is False:
             print('Should be integer! Try again')
             continue
-        elif int(width) % 2 == 0:
-            print('Should be ODD integer! Try again')
-            continue
         else:
             width = int(width)
-            star = '*'
-            space = ' ' * (width // 2)
-            print('a', space, 'b')
+            if width % 2 == 0:
+                width += 1
+            spaces_number = int(width // 2)
+            symbols_number = 1
 
             for i in range(1, width + 1):
-                print((space * (width - ((width + 1) // 2))) + star * (width  i
+                if i < (width + 1) // 2:
+                    print(' ' * spaces_number, symbol * symbols_number)
+                    spaces_number = spaces_number - 1
+                    symbols_number = symbols_number + 2
+                else:
+                    print(' ' * spaces_number, symbol * symbols_number)
+                    spaces_number = spaces_number + 1
+                    symbols_number = symbols_number - 2
+        break
 
-                      + star * i)
-                space = ' ' * (width // 2 - 1)
-            break
 
-
-
-diamond()
+# diamond()
 
 '''
 ​
@@ -529,7 +532,43 @@ diamond()
   #  
  # #
 #   #
-### YOUR CODE HERE ###
+'''
+
+
+def x_shape():
+    """Function creates cross from inserted symbols"""
+    symbol = input('Enter symbol: ')
+    while 1:
+        width = input('Enter odd integer: ')
+        if width.isdigit() is False:
+            print('Should be integer! Try again')
+            continue
+        else:
+            width = int(width)
+            if width % 2 == 0:
+                width += 1
+            tab = 0
+            spaces_number = width - 2
+
+            for i in range(1, width + 1):
+                if i < (width + 1) // 2:
+                    print(' ' * tab + symbol + ' ' * spaces_number + symbol)
+                    spaces_number = spaces_number - 2
+                    tab += 1
+                elif i == (width + 1) // 2:
+                    tab -= 1
+                    print(' ' * tab, symbol)
+                else:
+                    spaces_number = spaces_number + 2
+                    print(' ' * tab + symbol + ' ' * spaces_number + symbol)
+                    tab -= 1
+            break
+
+
+# x_shape()
+
+
+'''
 ​
 ​
 14
