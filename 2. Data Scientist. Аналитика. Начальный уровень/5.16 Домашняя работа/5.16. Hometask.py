@@ -36,16 +36,16 @@
 # func()
 
 
-def max_value():
-    """Function for defining maximum value in entered range of integers"""
-    integers = input('Input digits: ')
-    integers = integers.split(',')
-    integers = [int(i) for i in integers]
-    i_max = integers[0]
-    for i in integers:
-        if i > i_max:
-            i_max = i
-    print(f'Maximum integer is {i_max}')
+# def max_value():
+#     """Function for defining maximum value in entered range of integers"""
+#     integers = input('Input digits: ')
+#     integers = integers.split(',')
+#     integers = [int(i) for i in integers]
+#     i_max = integers[0]
+#     for i in integers:
+#         if i > i_max:
+#             i_max = i
+#     print(f'Maximum integer is {i_max}')
 
 
 # max_value()
@@ -64,24 +64,24 @@ def max_value():
 '''
 
 
-def get_integers():
-    """Function for getting integers from user and pack it in list"""
-    gotten_integers = []
-    while True:
-        integer = int(input('Input integer: '))
-        if integer == 0:
-            break
-        gotten_integers.append(integer)
-    return gotten_integers
-
-
-def max_value_fr_list(values_list):
-    """Function for defining maximum value in list"""
-    i_max = values_list[0]
-    for i in values_list:
-        if i > i_max:
-            i_max = i
-    return i_max
+# def get_integers():
+#     """Function for getting integers from user and pack it in list"""
+#     gotten_integers = []
+#     while True:
+#         integer = int(input('Input integer: '))
+#         if integer == 0:
+#             break
+#         gotten_integers.append(integer)
+#     return gotten_integers
+#
+#
+# def max_value_fr_list(values_list):
+#     """Function for defining maximum value in list"""
+#     i_max = values_list[0]
+#     for i in values_list:
+#         if i > i_max:
+#             i_max = i
+#     return i_max
 
 
 # integers_list = get_integers()
@@ -99,17 +99,17 @@ def max_value_fr_list(values_list):
 '''
 
 
-def year_days(year):
-    """Function calculates quantity days in year"""
-    if year % 400 == 0:
-        print(f'{year} year is leap year with 366 days in it')
-    elif year % 100 == 0:
-        print(f'{year} year is reqular with 365 days in it')
-    elif year % 4 == 0:
-        print(f'{year} year is leap year with 366 days in it')
-    else:
-        print(f'{year} year is reqular with 365 days in it')
-
+# def year_days(year):
+#     """Function calculates quantity days in year"""
+#     if year % 400 == 0:
+#         print(f'{year} year is leap year with 366 days in it')
+#     elif year % 100 == 0:
+#         print(f'{year} year is reqular with 365 days in it')
+#     elif year % 4 == 0:
+#         print(f'{year} year is leap year with 366 days in it')
+#     else:
+#         print(f'{year} year is reqular with 365 days in it')
+#
 
 # year_days(year=2000)
 # year_days(year=2100)
@@ -123,38 +123,38 @@ def year_days(year):
 ли эти клетки одного цвета.
 
 '''
-chess_letters = {
-    'a': 1,
-    'b': 2,
-    'c': 3,
-    'd': 4,
-    'e': 5,
-    'f': 6,
-    'g': 7,
-    'h': 8,
-}
-
-
-def chess_field_color(field):
-    """Function defines chess field color by it number"""
-    letter_value = chess_letters[field[0]]
-    if (letter_value + int(field[1])) % 2 == 0:
-        field_color = 'black'
-    else:
-        field_color = 'white'
-    return field_color
-
-
-def get_chess_field():
-    """Function get from user chess field number and check correction of input"""
-    while True:
-        field_number = input('Enter field:')
-        letter, digit = field_number[0], field_number[1]
-        if letter.isalpha() is False or digit.isdigit() is False:
-            print('Wrong format! Example: a1.')
-            continue
-        else:
-            return field_number
+# chess_letters = {
+#     'a': 1,
+#     'b': 2,
+#     'c': 3,
+#     'd': 4,
+#     'e': 5,
+#     'f': 6,
+#     'g': 7,
+#     'h': 8,
+# }
+#
+#
+# def chess_field_color(field):
+#     """Function defines chess field color by it number"""
+#     letter_value = chess_letters[field[0]]
+#     if (letter_value + int(field[1])) % 2 == 0:
+#         field_color = 'black'
+#     else:
+#         field_color = 'white'
+#     return field_color
+#
+#
+# def get_chess_field():
+#     """Function get from user chess field number and check correction of input"""
+#     while True:
+#         field_number = input('Enter field:')
+#         letter, digit = field_number[0], field_number[1]
+#         if letter.isalpha() is False or digit.isdigit() is False:
+#             print('Wrong format! Example: a1.')
+#             continue
+#         else:
+#             return field_number
 
 
 # field_1 = chess_field_color(get_chess_field())
@@ -175,18 +175,18 @@ def get_chess_field():
 '''
 
 
-def type_of_digit(digit):
-    """Function defines whether entered integer natural or composite"""
-    dividers = list(range(1, digit + 1))
-    counter = 0
-    for i in dividers:
-        if digit % i == 0:
-            counter += 1
-
-    if counter == 2:
-        print(f'Inserted integer {digit} is natural number.')
-    else:
-        print(f'Inserted integer {digit} is composite number.')
+# def type_of_digit(digit):
+#     """Function defines whether entered integer natural or composite"""
+#     dividers = list(range(1, digit + 1))
+#     counter = 0
+#     for i in dividers:
+#         if digit % i == 0:
+#             counter += 1
+#
+#     if counter == 2:
+#         print(f'Inserted integer {digit} is natural number.')
+#     else:
+#         print(f'Inserted integer {digit} is composite number.')
 
 
 # type_of_digit(2)
@@ -210,28 +210,28 @@ def type_of_digit(digit):
 #         print(f'There is no the least divider for integer {number}, other then 1')
 
 
-def the_least_divider():
-    """Function for calculating the least divider of integer"""
-    while True:
-        number = input('Enter integer bigger then 2: ')
-        if number.isdigit() is False:
-            print('Should be digit!')
-            continue
-        number = int(number)
-        if number <= 2:
-            print('Integer should be bigger then 2!')
-            continue
-        else:
-            least_divider = 0
-            for i in range(2, int(number)):
-                if number % i == 0:
-                    least_divider = i
-                    if least_divider > 0:
-                        print(f'The least divider for integer {number} is {least_divider}')
-                    break
-            if least_divider == 0:
-                print(f'There is no the least divider for integer {number}, other then 1')
-        return least_divider
+# def the_least_divider():
+#     """Function for calculating the least divider of integer"""
+#     while True:
+#         number = input('Enter integer bigger then 2: ')
+#         if number.isdigit() is False:
+#             print('Should be digit!')
+#             continue
+#         number = int(number)
+#         if number <= 2:
+#             print('Integer should be bigger then 2!')
+#             continue
+#         else:
+#             least_divider = 0
+#             for i in range(2, int(number)):
+#                 if number % i == 0:
+#                     least_divider = i
+#                     if least_divider > 0:
+#                         print(f'The least divider for integer {number} is {least_divider}')
+#                     break
+#             if least_divider == 0:
+#                 print(f'There is no the least divider for integer {number}, other then 1')
+#         return least_divider
 
 
 # for i in range(1, 36):
@@ -248,49 +248,49 @@ def the_least_divider():
 Ограничение: нельзя пользоваться функцией ceil() из модуля math и ее аналогами.
 
 '''
-params_dict = {}
-
-
-def get_params():
-    # params_dict = {
-    #     1: 'marathon distance',
-    #     2: 'first day training kilometers',
-    #     3: 'percent of daily training increase'
-    # }
-
-    # params_dict['marathon distance'] = input('Enter marathon distance: ')
-    params_dict['marathon distance'] = '10'
-    # params_dict['first day training kilometers'] = input('Enter first day training km: ')
-    params_dict['first day training kilometers'] = '1'
-    # params_dict['percent of daily training increase'] = input('Enter percent of daily training increase: ')
-    params_dict['percent of daily training increase'] = '100'
-    print(params_dict)
-
-    check = 0
-    while check < 3:
-        for item in params_dict.items():
-            if item[1].isdigit() is False:
-                # print(f'Parameter {item[0]} should be integer! Try again!')
-                params_dict[item[0]] = input(f'Parameter {item[0]} should be integer! Try again: ')
-                check = 0
-            else:
-                check += 1
-
-    print(params_dict, params_dict['marathon distance'])
-    return params_dict
-
-
-def training_plan(marathon_km, first_day_km, increase_percent_km):
-    # marathon_km = 5
-    daily_training = first_day_km
-    # increase_percent_km = 50
-    training_days = 1
-    while marathon_km > daily_training:
-        # augmentation of training kilometers depending on training days
-        whole_increase_km = training_days * (first_day_km * (increase_percent_km/100))
-        daily_training = first_day_km + whole_increase_km
-        training_days += 1
-    print(training_days)
+# params_dict = {}
+#
+#
+# def get_params():
+#     # params_dict = {
+#     #     1: 'marathon distance',
+#     #     2: 'first day training kilometers',
+#     #     3: 'percent of daily training increase'
+#     # }
+#
+#     # params_dict['marathon distance'] = input('Enter marathon distance: ')
+#     params_dict['marathon distance'] = '10'
+#     # params_dict['first day training kilometers'] = input('Enter first day training km: ')
+#     params_dict['first day training kilometers'] = '1'
+#     # params_dict['percent of daily training increase'] = input('Enter percent of daily training increase: ')
+#     params_dict['percent of daily training increase'] = '100'
+#     print(params_dict)
+#
+#     check = 0
+#     while check < 3:
+#         for item in params_dict.items():
+#             if item[1].isdigit() is False:
+#                 # print(f'Parameter {item[0]} should be integer! Try again!')
+#                 params_dict[item[0]] = input(f'Parameter {item[0]} should be integer! Try again: ')
+#                 check = 0
+#             else:
+#                 check += 1
+#
+#     print(params_dict, params_dict['marathon distance'])
+#     return params_dict
+#
+#
+# def training_plan(marathon_km, first_day_km, increase_percent_km):
+#     # marathon_km = 5
+#     daily_training = first_day_km
+#     # increase_percent_km = 50
+#     training_days = 1
+#     while marathon_km > daily_training:
+#         # augmentation of training kilometers depending on training days
+#         whole_increase_km = training_days * (first_day_km * (increase_percent_km/100))
+#         daily_training = first_day_km + whole_increase_km
+#         training_days += 1
+#     print(training_days)
 
 
 # get_params()
@@ -308,20 +308,20 @@ def training_plan(marathon_km, first_day_km, increase_percent_km):
 
 '''
 
-def number_range_power():
-    """Function for calculating sum of series integers, raised to second power"""
-    number = ''
-    summ = 0
-    while number.isdigit() is False:
-        number = input('Enter integer: ')
-        # check for negative integer input and if so convert it to positive
-        number = number.lstrip('-') if number.startswith('-') else number
-    else:
-        for i in range(1, int(number) + 1):
-            summ = summ + i ** 2
-            print(i, i ** 2, summ, sep=' ,')
-    print(summ)
-    return summ
+# def number_range_power():
+#     """Function for calculating sum of series integers, raised to second power"""
+#     number = ''
+#     summ = 0
+#     while number.isdigit() is False:
+#         number = input('Enter integer: ')
+#         # check for negative integer input and if so convert it to positive
+#         number = number.lstrip('-') if number.startswith('-') else number
+#     else:
+#         for i in range(1, int(number) + 1):
+#             summ = summ + i ** 2
+#             print(i, i ** 2, summ, sep=' ,')
+#     print(summ)
+#     return summ
 
 
 # number_range_power()
@@ -338,28 +338,28 @@ def number_range_power():
 # import math
 
 
-def number_range_factorial():
-    """Function for calculating sum of factorials of series integers"""
-    number = ''
-    while number.isdigit() is False:
-        number = input('Enter positive integer: ')
-        # check for negative integer input and if so convert it to positive
-        number = number.lstrip('-') if number.startswith('-') else number
-    else:
-        number = int(number)
-        summ = 0
-        for i in range(1, number + 1):
-            number_factorial = 1
-            for j in range(1, i + 1):
-                number_factorial = number_factorial * j
-            # print(f'My factorial of   {i} is {number_factorial}')
-            # print(f'Real factorial of {i} is {math.factorial(i)}')
-            summ = summ + number_factorial
-            # print('Sum: ', summ)
-            # print()
-
-    print('Final sum: ', summ)
-    return summ
+# def number_range_factorial():
+#     """Function for calculating sum of factorials of series integers"""
+#     number = ''
+#     while number.isdigit() is False:
+#         number = input('Enter positive integer: ')
+#         # check for negative integer input and if so convert it to positive
+#         number = number.lstrip('-') if number.startswith('-') else number
+#     else:
+#         number = int(number)
+#         summ = 0
+#         for i in range(1, number + 1):
+#             number_factorial = 1
+#             for j in range(1, i + 1):
+#                 number_factorial = number_factorial * j
+#             # print(f'My factorial of   {i} is {number_factorial}')
+#             # print(f'Real factorial of {i} is {math.factorial(i)}')
+#             summ = summ + number_factorial
+#             # print('Sum: ', summ)
+#             # print()
+#
+#     print('Final sum: ', summ)
+#     return summ
 
 
 # number_range_factorial()
@@ -394,26 +394,26 @@ def number_range_factorial():
 
 # правильное решение
 
-def even_integers_counter():
-    """Function calculates sum of even integers series"""
-    counter = 0
-    while 1:
-        integer = input('Input integer: ')
-        if integer.isdigit():
-            integer = int(integer)
-            if integer != 0 and integer % 2 == 0:
-                counter += 1
-                continue
-            elif integer != 0:
-                continue
-            else:
-                print(f'Counter: {counter}')
-                break
-        else:
-            print('Should be integer! Try again, please')
-            continue
-    print(f'Counter: {counter}')
-    return counter
+# def even_integers_counter():
+#     """Function calculates sum of even integers series"""
+#     counter = 0
+#     while 1:
+#         integer = input('Input integer: ')
+#         if integer.isdigit():
+#             integer = int(integer)
+#             if integer != 0 and integer % 2 == 0:
+#                 counter += 1
+#                 continue
+#             elif integer != 0:
+#                 continue
+#             else:
+#                 print(f'Counter: {counter}')
+#                 break
+#         else:
+#             print('Should be integer! Try again, please')
+#             continue
+#     print(f'Counter: {counter}')
+#     return counter
 
 
 # even_integers_counter()
@@ -429,44 +429,43 @@ def even_integers_counter():
 '''
 
 
-def female_football_team_form():
-    """Function creates list of female football team players"""
-
-    players = []
-    while 1:
-        name = input('Player\'s name: ')
-        sex = input('Player\'s sex (male / female): ')
-        if sex == 'female':
-            pass
-        else:
-            try_again_sex = input('Sorry, this team only for girls. Try again? y/n: ')
-            if try_again_sex == 'y':
-                continue
-            else:
-                print(f'Team players: {players}')
-                break
-
-
-        age = input('Player\'s age: ')
-        if age.isdigit() and 18 <= int(age) <= 35:
-            print("Player is successfully added to football team!")
-            player = [name, age]
-            players.append(player)
-        else:
-            try_again_age = input('Sorry, player\'s age is not suitable for restrictions. Try again? y/n: ')
-            if try_again_age == 'y':
-                continue
-            else:
-                print(f'Team players: {players}')
-                break
-
-        again = input('Do you want to add another player? y/n: ')
-        if again == 'y':
-            continue
-        else:
-            print(f'Team players: ')
-            [print(i) for i in players]
-            break
+# def female_football_team_form():
+#     """Function creates list of female football team players"""
+#
+#     players = []
+#     while 1:
+#         name = input('Player\'s name: ')
+#         sex = input('Player\'s sex (male / female): ')
+#         if sex == 'female':
+#             pass
+#         else:
+#             try_again_sex = input('Sorry, this team only for girls. Try again? y/n: ')
+#             if try_again_sex == 'y':
+#                 continue
+#             else:
+#                 print(f'Team players: {players}')
+#                 break
+#
+#         age = input('Player\'s age: ')
+#         if age.isdigit() and 18 <= int(age) <= 35:
+#             print("Player is successfully added to football team!")
+#             player = [name, age]
+#             players.append(player)
+#         else:
+#             try_again_age = input('Sorry, player\'s age is not suitable for restrictions. Try again? y/n: ')
+#             if try_again_age == 'y':
+#                 continue
+#             else:
+#                 print(f'Team players: {players}')
+#                 break
+#
+#         again = input('Do you want to add another player? y/n: ')
+#         if again == 'y':
+#             continue
+#         else:
+#             print(f'Team players: ')
+#             [print(i) for i in players]
+#             break
 
 
 # female_football_team_form()
@@ -488,31 +487,31 @@ def female_football_team_form():
 '''
 
 
-def diamond():
-    """Function creates diamond from inserted symbols"""
-    symbol = input('Insert any symbol: ')
-    while 1:
-        width = input('Enter odd integer: ')
-        if width.isdigit() is False:
-            print('Should be integer! Try again')
-            continue
-        else:
-            width = int(width)
-            if width % 2 == 0:
-                width += 1
-            spaces_number = int(width // 2)
-            symbols_number = 1
-
-            for i in range(1, width + 1):
-                if i < (width + 1) // 2:
-                    print(' ' * spaces_number, symbol * symbols_number)
-                    spaces_number = spaces_number - 1
-                    symbols_number = symbols_number + 2
-                else:
-                    print(' ' * spaces_number, symbol * symbols_number)
-                    spaces_number = spaces_number + 1
-                    symbols_number = symbols_number - 2
-        break
+# def diamond():
+#     """Function creates diamond from inserted symbols"""
+#     symbol = input('Insert any symbol: ')
+#     while 1:
+#         width = input('Enter odd integer: ')
+#         if width.isdigit() is False:
+#             print('Should be integer! Try again')
+#             continue
+#         else:
+#             width = int(width)
+#             if width % 2 == 0:
+#                 width += 1
+#             spaces_number = int(width // 2)
+#             symbols_number = 1
+#
+#             for i in range(1, width + 1):
+#                 if i < (width + 1) // 2:
+#                     print(' ' * spaces_number, symbol * symbols_number)
+#                     spaces_number = spaces_number - 1
+#                     symbols_number = symbols_number + 2
+#                 else:
+#                     print(' ' * spaces_number, symbol * symbols_number)
+#                     spaces_number = spaces_number + 1
+#                     symbols_number = symbols_number - 2
+#         break
 
 
 # diamond()
@@ -535,35 +534,35 @@ def diamond():
 '''
 
 
-def x_shape():
-    """Function creates cross from inserted symbols"""
-    symbol = input('Enter symbol: ')
-    while 1:
-        width = input('Enter odd integer: ')
-        if width.isdigit() is False:
-            print('Should be integer! Try again')
-            continue
-        else:
-            width = int(width)
-            if width % 2 == 0:
-                width += 1
-            tab = 0
-            spaces_number = width - 2
-
-            for i in range(1, width + 1):
-                if i < (width + 1) // 2:
-                    print(' ' * tab + symbol + ' ' * spaces_number + symbol)
-                    spaces_number = spaces_number - 2
-                    tab += 1
-                elif i == (width + 1) // 2:
-                    tab -= 1
-                    print(' ' * tab, symbol)
-                else:
-                    spaces_number = spaces_number + 2
-                    print(' ' * tab + symbol + ' ' * spaces_number + symbol)
-                    tab -= 1
-            break
-
+# def x_shape():
+#     """Function creates cross from inserted symbols"""
+#     symbol = input('Enter symbol: ')
+#     while 1:
+#         width = input('Enter odd integer: ')
+#         if width.isdigit() is False:
+#             print('Should be integer! Try again')
+#             continue
+#         else:
+#             width = int(width)
+#             if width % 2 == 0:
+#                 width += 1
+#             tab = 0
+#             spaces_number = width - 2
+#
+#             for i in range(1, width + 1):
+#                 if i < (width + 1) // 2:
+#                     print(' ' * tab + symbol + ' ' * spaces_number + symbol)
+#                     spaces_number = spaces_number - 2
+#                     tab += 1
+#                 elif i == (width + 1) // 2:
+#                     tab -= 1
+#                     print(' ' * tab, symbol)
+#                 else:
+#                     spaces_number = spaces_number + 2
+#                     print(' ' * tab + symbol + ' ' * spaces_number + symbol)
+#                     tab -= 1
+#             break
+#
 
 # x_shape()
 
@@ -577,8 +576,78 @@ def x_shape():
 останется один. Если разложить в кучи по 7, не будет остатка. Нужно найти минимальное количество шаров, 
 удовлетворяющее условию.
 
-### YOUR CODE HERE ###
-​
+'''
+# numbers_list = range(1000)
+#
+# is_divide_2 = lambda x: x % 2 == 1
+# is_divide_3 = lambda x: x % 3 == 1
+# is_divide_4 = lambda x: x % 4 == 1
+# is_divide_5 = lambda x: x % 5 == 1
+# is_divide_6 = lambda x: x % 6 == 1
+# is_divide_7 = lambda x: x % 7 == 0
+#
+# numbers_2 = list(filter(is_divide_2, numbers_list))
+# print(numbers_2)
+#
+# numbers_3 = list(filter(is_divide_3, numbers_2))
+# print(numbers_3)
+#
+# numbers_4 = list(filter(is_divide_4, numbers_3))
+# print(numbers_4)
+#
+# numbers_5 = list(filter(is_divide_5, numbers_4))
+# print(numbers_5)
+#
+# numbers_6 = list(filter(is_divide_6, numbers_5))
+# print(numbers_6)
+#
+# numbers_7 = list(filter(is_divide_7, numbers_6))
+# print(numbers_7)
+
+x = 61
+summary = 0
+checksum = 0
+
+while checksum != 6:
+    for i in range(2, 7):
+        summary = summary + x % i
+        checksum += 1
+        if summary != checksum:
+            x += 1
+            checksum = 0
+            break
+#
+#
+print(x)
+
+    # print(x)
+    # break
+    # continue
+    #     else:
+    #         if x % 7 != 0:
+    #             x += 1
+    #             checksum = 0
+    #             break
+    #         else:
+    #             print(x)
+    # break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 ​
 15
 Рабочие клеили обои на стены. Первую стену поклеили за M минут, а каждую следующую на 5 минут больше, чем предыдущую. 
