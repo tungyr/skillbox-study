@@ -604,47 +604,23 @@
 # numbers_7 = list(filter(is_divide_7, numbers_6))
 # print(numbers_7)
 
-x = 61
-summary = 0
-checksum = 0
 
-while checksum != 6:
-    for i in range(2, 7):
-        summary = summary + x % i
-        checksum += 1
-        if summary != checksum:
-            x += 1
-            checksum = 0
-            break
+
+# x = 1
 #
-#
-print(x)
-
-    # print(x)
-    # break
-    # continue
-    #     else:
-    #         if x % 7 != 0:
-    #             x += 1
-    #             checksum = 0
-    #             break
-    #         else:
-    #             print(x)
-    # break
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# while 1:
+#     first_check = 0
+#     for i in range(2, 7):
+#         if x % i != 1:
+#             break
+#         else:
+#             first_check = first_check + x % i
+#     if first_check == 5 and x % 7 == 0:
+#         print('Minimum balls quantity: ', x)
+#         break
+#     else:
+#         x += 1
+#         continue
 
 
 '''
@@ -655,9 +631,36 @@ print(x)
 Программа должна выводить, сколько часов рабочие потратили на поклейку обоев во всей квартире. 
 Ответом должно быть целое число.
 
+
 Ограничение: нельзя пользоваться готовыми функциями bool(), floor() и их аналогами.
 
-### YOUR CODE HERE ###
+# '''
+# walls = int(input('Walls: '))
+# time_for_wall = int(input('Minutes: '))
+
+
+def time_for_walls() -> int:
+    walls = int(input('Walls: '))
+    minutes_for_wall = int(input('Minutes per wall: '))
+
+    for i in range(walls):
+        minutes_for_wall = minutes_for_wall + 5
+
+    hours_for_walls = minutes_for_wall // 60
+    reminder_minutes = minutes_for_wall - (hours_for_walls * 60)
+
+    if reminder_minutes >= 30:
+        hours_for_walls += 1
+    # print(f'minutes: {minutes_for_wall} \n'
+    #       f'hours: {hours_for_walls} \n'
+    #       f'reminder: {reminder_minutes}')
+    print(f'Hours for all walls: {hours_for_walls}')
+    return hours_for_walls
+
+# time_for_walls()
+
+
+'''
 ​
 ​
 16
@@ -667,14 +670,74 @@ print(x)
 
 Ограничение: нельзя пользоваться готовой функцией set() и ее аналогами.
 
-### YOUR CODE HERE ###
+'''
+
+
+# def get_words() -> list:
+#     """Function for getting words from user and pack it in list"""
+#     gotten_words = []
+#     while 1:
+#         word = input('Input word: ')
+#         if word == '':
+#             break
+#         gotten_words.append(word)
+#     print(gotten_words)
+#     return gotten_words
+
+
+def remove_duplicate(cheking_list) -> list:
+    """Function for removing duplicate elements in list"""
+    unic_element_list = []
+    for i in cheking_list:
+        if i in unic_element_list:
+            pass
+        else:
+            unic_element_list.append(i)
+    print(unic_element_list)
+    return unic_element_list
+
+
+# remove_duplicate(get_words())
+
+'''
 ​
 ​
 17
 Напишите программу, которая выводит число пар одинаковых элементов в списке. Программа должна запрашивать на вход слова, 
 каждое с новой строки, пока пользователь не введет пустую строку.
 
-### YOUR CODE HERE ###
+'''
+
+
+def get_words() -> list:
+    """Function for getting words from user and pack it in list"""
+    gotten_words = []
+    while 1:
+        word = input('Input word: ')
+        if word == '':
+            break
+        gotten_words.append(word)
+    return gotten_words
+
+
+def pairs_quantity(cheking_list) -> dict:
+    """Function for calculation of pair elements in list"""
+    pair_element_dict = {}
+    for i in cheking_list:
+        if cheking_list.count(i) > 1:
+            pair_element_dict[i] = cheking_list.count(i) // 2
+
+    counter = 0
+    for key, value in pair_element_dict.items():
+        print(f'Element {key} has {value} pair(s)')
+        counter += 1
+    print(f'{counter} elements have pairs in list')
+    return pair_element_dict
+
+
+pairs_quantity(get_words())
+
+'''
 ​
 ​
 18
