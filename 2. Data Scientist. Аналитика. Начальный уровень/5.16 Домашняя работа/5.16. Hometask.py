@@ -36,23 +36,19 @@
 # func()
 
 
-# def max_value():
-#     """Function for defining maximum value in entered range of integers"""
-#     integers = input('Input digits: ')
-#     integers = integers.split(',')
-#     integers = [int(i) for i in integers]
-#     i_max = integers[0]
-#     for i in integers:
-#         if i > i_max:
-#             i_max = i
-#     print(f'Maximum integer is {i_max}')
-
+def max_value() -> int:
+    """Function for definition maximum value in entered range of integers"""
+    integers = input('Input integers separated by comma (,): ')
+    integers = integers.split(',')  # convert inserted input string to list by .split() method
+    integers = [int(i) for i in integers]
+    i_max = integers[0]  # set first item from integers list as biggest integer
+    for i in integers:
+        if i > i_max:
+            i_max = i
+    print(f'Maximum integer is {i_max}')
+    return i_max
 
 # max_value()
-
-
-
-
 
 '''
 2
@@ -64,33 +60,64 @@
 '''
 
 
-# def get_integers():
-#     """Function for getting integers from user and pack it in list"""
-#     gotten_integers = []
-#     while True:
-#         integer = int(input('Input integer: '))
-#         if integer == 0:
-#             break
-#         gotten_integers.append(integer)
-#     return gotten_integers
+def get_integers() -> list:
+    """Function for getting integers from user and pack it in list"""
+    gotten_integers = []
+    while True:
+        try:
+            #  check for correct input from user
+            integer = int(input('Input integer, for exit type 0: '))
+        except ValueError:
+            if input('Last item not integer! Complete input? y/n ') == 'n':
+                continue
+            else:
+                break
+        if integer == 0:
+            break
+        gotten_integers.append(integer)
+    print(f'Received integers are: {gotten_integers}')
+    return gotten_integers
+
+# TODO: разобраться с сортировкой без sort
+
+def sort(values_list):
+    for i in values_list:
+        if values_list.count(i) > 1:  # check list for repeated values
+            for j in range(values_list.count(i)):
+                values_list.remove(i)
+        else:
+            for i in len(values_list):
+                if item < values_list[item.index + 1]:
+                    item, values_list[item.index + 1] = values_list[item.index + 1], values_list[item.index -1]
+
+def max_value_fr_list(values_list) -> list:
+    """Function for defining maximum value in list, return max value and list without values duplicates"""
+    i_max = values_list[0]
+    unique_items_list = []
+    for i in values_list:
+        if i in unique_items_list:  # check list for repeated values
+            continue
+        else:
+            if i > i_max:
+                i_max = i
+            unique_items_list.append(i)
+    return [i_max, unique_items_list]
+
+
+sort([1, 1, 2, 3, 4, 4, 5])
+
+# initial_list = get_integers()  # get list of integers from user
 #
+# # get max value in list
+# max_int = max_value_fr_list(values_list=initial_list)[0]
 #
-# def max_value_fr_list(values_list):
-#     """Function for defining maximum value in list"""
-#     i_max = values_list[0]
-#     for i in values_list:
-#         if i > i_max:
-#             i_max = i
-#     return i_max
-
-
-# integers_list = get_integers()
-# initial_list = str(integers_list)
-# print(f'Received integers are: {integers_list}')
-# integers_list.remove(max_value_fr_list(values_list=integers_list))
-# print(f'Second maximum value in list {initial_list} is {max_value_fr_list(values_list=integers_list)}')
-
-
+# # get values list cleaned from duplicates for further work
+# unique_values_list = max_value_fr_list(values_list=initial_list)[1]
+#
+# unique_values_list.remove(max_int)  # remove max value from list
+#
+# # get second max value in list and print it:
+# print(f'Second maximum value in list {initial_list} is {max_value_fr_list(values_list=unique_values_list)[0]}')
 
 '''
 3
@@ -98,7 +125,7 @@
 
 '''
 
-
+#
 # def year_days(year):
 #     """Function calculates quantity days in year"""
 #     if year % 400 == 0:
@@ -110,7 +137,7 @@
 #     else:
 #         print(f'{year} year is reqular with 365 days in it')
 #
-
+#
 # year_days(year=2000)
 # year_days(year=2100)
 # year_days(year=1600)
@@ -735,7 +762,7 @@ def pairs_quantity(cheking_list) -> dict:
     return pair_element_dict
 
 
-pairs_quantity(get_words())
+# pairs_quantity(get_words())
 
 '''
 ​
@@ -744,7 +771,28 @@ pairs_quantity(get_words())
 Будем считать, что кубик может иметь неограниченное количество граней (натуральное число). Напишите программу, которая 
 запрашивает, сколько граней имеется у двух разных кубиков. Затем выводит все возможные комбинации результатов бросков 
 двух таких кубиков.
-
-### YOUR CODE HERE ###
-
 '''
+
+
+def dice_combinations() -> int:
+    """Function defines all possible combinations of two dices"""
+    while 1:
+        try:
+            dice1_sides, dice2_sides = map(int, input('Enter sides quantity at first and second dice separated by '
+                                                      'space: ').split())
+        except ValueError:
+            if input('Unsupported data! Try again? y/n ') == 'y':
+                continue
+            else:
+                break
+
+        print('Possible combinations: ', '\n')
+        combinations = 1
+        for i in range(1, dice1_sides + 1):
+            for j in range(1, dice2_sides + 1):
+                print(f'{combinations}. {i} x {j}')
+                combinations += 1
+        return combinations
+
+
+# dice_combinations()
