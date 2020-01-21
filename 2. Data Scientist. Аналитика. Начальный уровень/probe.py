@@ -86,21 +86,45 @@ lentach = ['¯', "\\", '_', '(', 'ツ', ')', '_', '/', '¯']
 # for i in my_dict:
 #     print(i, my_dict[i])
 
-def power(number, pow):
-    print('Function called with parameters', number, pow)
-    power_value = number ** pow
-    return power_value
+# def power(number, pow):
+#     print('Function called with parameters', number, pow)
+#     power_value = number ** pow
+#     return power_value
+#
+#
+# my_list = [3, 14, 15, 92, 6]
+# for element in my_list:
+#     result = power(number=element, pow=2)
+#     print(result)
+#
+# def create_default_user():
+#     name = 'Victor'
+#     age = 34
+#     return name, age
+#
+# result = create_default_user()
+# print(result)
+
+# ---------------------------------------------------------------------------------------------------------------------
+
+# my_list = [1, 2, 3]
+#
+# for elem in my_list:
+#     print('for: ', elem)
+# else:
+#     elem = 'finito'
+#
+# print(elem)
+
+# ---------------------------------------------------------------------------------------------------------------------
+
+def add_item(item=1, add_list=[]):
+    add_list.append(item)
+    # print(add_list)
+    return add_list
 
 
-my_list = [3, 14, 15, 92, 6]
-for element in my_list:
-    result = power(number=element, pow=2)
-    print(result)
-
-def create_default_user():
-    name = 'Victor'
-    age = 34
-    return name, age
-
-result = create_default_user()
-print(result)
+print(add_item())
+print(add_item(2,))
+print(add_item(3, [7, 8, 9]))
+print(add_item(5))
