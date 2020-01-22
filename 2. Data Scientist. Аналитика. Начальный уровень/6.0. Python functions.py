@@ -1,3 +1,7 @@
+# ----------------------------------------------------------------------------------------------------------
+# Skillbox 6.1 - 6.5 Python functions, namespace etc.
+# https://go.skillbox.ru/course/data-scientist-1/c449f346-516e-4f66-b261-402bcacee535
+
 # my_list = [1, 2, 3]
 #
 # for elem in my_list:
