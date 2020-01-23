@@ -117,14 +117,29 @@ lentach = ['¯', "\\", '_', '(', 'ツ', ')', '_', '/', '¯']
 # print(elem)
 
 # ---------------------------------------------------------------------------------------------------------------------
+#
+# def add_item(item=1, add_list=[]):
+#     add_list.append(item)
+#     # print(add_list)
+#     return add_list
+#
+#
+# print(add_item())
+# print(add_item(2,))
+# print(add_item(3, [7, 8, 9]))
+# print(add_item(5))
 
-def add_item(item=1, add_list=[]):
-    add_list.append(item)
-    # print(add_list)
-    return add_list
+# ---------------------------------------------------------------------------------------------------------------------
+
+def func():
+    print('first')
 
 
-print(add_item())
-print(add_item(2,))
-print(add_item(3, [7, 8, 9]))
-print(add_item(5))
+func()
+
+
+def func():
+    print('second')
+
+
+func()
