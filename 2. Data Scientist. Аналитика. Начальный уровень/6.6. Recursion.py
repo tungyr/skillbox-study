@@ -19,28 +19,31 @@
 
 # TODO: grasp on how this recursive beast is working!!!
 
-some_list = [1, 2, 3, 4]
-i = 0
+some_list = [1, 2, 3]
+function_calls = 0
 
 def summary(summ_list, i):
+    global function_calls
+    function_calls += 1
     print('summary with i ', i)
     if i == 0:
         print('i = 0!')
         return summ_list[i]
-    summary_minus_1 = summary(summ_list, i=i-1)
-    if i < len(some_list):
-        summary_minus_1 = summary_minus_1 + summ_list[i]
-        print('summary_minus_1 + summ_list[i]', summary_minus_1)
-        return summary_minus_1
+    print('before next_call')
+    next_call = summary(summ_list, i=i-1)
+    print('after next_call')
+    if i < len(summ_list):
+        next_call = next_call + summ_list[i]
+        print('next_call + summ_list[i]', next_call)
+        return next_call
     else:
-        print('final summary_minus_1: ', summary_minus_1)
-        return summary_minus_1
+        print('final next_call: ', next_call)
+        return next_call
 
-summary(some_list, len(some_list))
+summary(some_list, 3)
 
 # -----------------------------------------------------
 
-# # TODO: finish recursive function and grasp it's work principle
 # # recursion for searching in trees
 #
 # html_dom = {
