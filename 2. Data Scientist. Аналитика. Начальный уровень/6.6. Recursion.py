@@ -19,7 +19,7 @@
 
 # TODO: grasp on how this recursive beast is working!!!
 
-some_list = [1, 2, 3]
+some_list = [1, 2, 3, 4, 5, 6, 7, 8]
 function_calls = 0
 
 def summary(summ_list, i):
@@ -40,7 +40,7 @@ def summary(summ_list, i):
         print('final next_call: ', next_call)
         return next_call
 
-summary(some_list, 3)
+summary(some_list, 5)
 
 # -----------------------------------------------------
 
