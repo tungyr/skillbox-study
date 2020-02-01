@@ -285,77 +285,62 @@ def to_buy(*new_items, shopping_list=None):
  20
 
 '''
-
-
-def summary():
-    """Function recursively calculates summary of integers row, defined by user"""
-    result = 0
-
-    def recursive_sum(calc_list, countdown):
-        """Recursive calculation of integers range sum"""
-        if countdown == 0:
-            return calc_list[countdown]
-        next_call = recursive_sum(calc_list, countdown=countdown - 1)
-        if countdown < len(calc_list):
-            next_call = next_call + calc_list[countdown]
-            return next_call
-        else:
-            return next_call
-
-    while True:
-        user_input = input('Input amount of integers n, calculation step m separated by comma. Example: 1, 2: ')
-
-        # check whether user input consist of integers
-        try:
-            user_input = user_input.split(',')
-            user_input = [int(i) for i in user_input]
-            range_n, step_m = user_input
-            print(f'You have input: n = {range_n}, m = {step_m}')
-        except ValueError:
-            again = input('Something went wrong! Input should be like this: 1, 2. Try again? y/n: ')
-            if again == 'y':
-                continue
-            else:
-                break
-        else:
-            # check whether user input consist of positive integers
-            if range_n <= 0 or step_m <= 0:
-                again = input('Integers are less or equal to 0! Input should be like this: 1, 2. Try again? y/n: ')
-                if again == 'y':
-                    continue
-                else:
-                    break
-
-
-        generated_list = list(range(1, range_n + 1))
-        print(generated_list)
-        # check for step bigger than last integer row value
-        if range_n <= step_m:
-            print(f'Sum of integers in row {generated_list} with step {step_m} is {generated_list[-1]}')
-        else:
-            # include in integer row only values as per step m
-            generated_list = generated_list[step_m - 1::step_m]
-            print('generated_list[::m]: ', generated_list)
-            result = recursive_sum(calc_list=generated_list, countdown=range_n)
-            print(f'Sum of integers in row {generated_list} with step {step_m} is {result}')
-        return result
-
-
-summary()
-
-
-
-# n, m = 5, 4
-# generated_list = list(range(1, n + 1))
-# print(generated_list)
-# if n <= m:
-#     print(f'Sum of integers in row {generated_list} with step {m} is {generated_list[-1]}')
-# else:
-#     generated_list = generated_list[::m]
-#     print(generated_list)
-#     recursive_sum(calc_list=generated_list, i=n)
-
 #
+#
+# def summary():
+#     """Function recursively calculates summary of integers row, defined by user"""
+#     result = 0
+#
+#     def recursive_sum(calc_list, countdown):
+#         """Recursive calculation of integers range sum"""
+#         if countdown == 0:
+#             return calc_list[countdown]
+#         next_call = recursive_sum(calc_list, countdown=countdown - 1)
+#         if countdown < len(calc_list):
+#             next_call = next_call + calc_list[countdown]
+#             return next_call
+#         else:
+#             return next_call
+#
+#     while True:
+#         user_input = input('Enter amount of integers n, calculation step m separated by comma. Example: 1, 2: ')
+#
+#         # check whether user input consist of integers
+#         try:
+#             user_input = user_input.split(',')
+#             user_input = [int(i) for i in user_input]
+#             range_n, step_m = user_input
+#             print(f'You have entered: n = {range_n}, m = {step_m}')
+#         except ValueError:
+#             again = input('Something went wrong! Input should be like this: 1, 2. Try again? y/n: ')
+#             if again == 'y':
+#                 continue
+#             else:
+#                 break
+#         else:
+#             # check whether user input consist of positive integers
+#             if range_n <= 0 or step_m <= 0:
+#                 again = input('Integers are less or equal to 0! Input should be like this: 1, 2. Try again? y/n: ')
+#                 if again == 'y':
+#                     continue
+#                 else:
+#                     break
+#
+#         generated_list = list(range(1, range_n + 1))
+#         print(generated_list)
+#         # check for step bigger than last integer row value
+#         if range_n <= step_m:
+#             print(f'Sum of integers in row {generated_list} with step {step_m} is {generated_list[-1]}')
+#         else:
+#             # include in integer row only values as per step m
+#             generated_list = generated_list[step_m - 1::step_m]
+#             print('generated_list[::m]: ', generated_list)
+#             result = recursive_sum(calc_list=generated_list, countdown=range_n)
+#             print(f'Sum of integers in row {generated_list} with step {step_m} is {result}')
+#         return result
+
+
+# summary()
 
 
 '''
@@ -363,9 +348,57 @@ summary()
 11. Напишите функцию, которая возводит число в положительную степень с помощью рекурсии.В качестве аргументов подаются
 целые положительные числа n(число) и m(степень).
 
-### YOUR CODE HERE ###
-​
-​
+'''
+
+
+def exponent():
+    """Function recursively calculates power of integer with base number and exponent defined by user"""
+    result = 0
+
+
+
+    while True:
+        user_input = input('Enter base integer n, exponent - integer m separated by comma. Example: 2, 3: ')
+
+        # check whether user input consist of integers
+        try:
+            user_input = user_input.split(',')
+            user_input = [int(i) for i in user_input]
+            base_n, exponent_m = user_input
+            print(f'You have entered: base n = {base_n}, exponent m = {exponent_m}')
+        except ValueError:
+            again = input('Something went wrong! Input should be like this: 2, 3. Try again? y/n: ')
+            if again == 'y':
+                continue
+            else:
+                break
+        else:
+            # check whether user input consist of positive integers
+            if base_n <= 0 or exponent_m <= 0:
+                again = input('Integers are less or equal to 0! Input should be like this: 2, 3. Try again? y/n: ')
+                if again == 'y':
+                    continue
+                else:
+                    break
+
+
+        def recursive_exponent(base, exponent):
+            """Recursive calculation power of integer"""
+            if exponent == 0:
+                return base * base
+            next_call = recursive_exponent(base, exponent=exponent - 1)
+            next_call = next_call + base * base
+            print(next_call)
+            return next_call
+
+        recursive_exponent(base=base_n, exponent=exponent_m)
+
+
+exponent()
+
+
+'''
+
 12. Напишите функцию, которая возводит число в отрицательную степень число с помощью рекурсии.В качестве аргументов
 подаются целое положительное число n(число) и целое отрицательное число m(степень).
 
