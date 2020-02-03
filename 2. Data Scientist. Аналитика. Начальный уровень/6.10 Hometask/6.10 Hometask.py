@@ -351,21 +351,96 @@ def to_buy(*new_items, shopping_list=None):
 '''
 
 
-def exponent():
-    """Function recursively calculates power of integer with base number and exponent defined by user"""
+# def exponent():
+#     """Function recursively calculates power of integer with base number and exponent defined by user"""
+#
+#     superscript_map = {
+#         "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶",
+#         "7": "⁷", "8": "⁸", "9": "⁹"}
+#
+#     result = 0
+#
+#     while True:
+#         user_input = input('Please enter base number n, exponent - integer m separated by comma. Example: 2, 3: ')
+#
+#         # check whether user input consist of integers
+#         try:
+#             user_input = user_input.split(',')
+#             user_input = [int(i) for i in user_input]
+#             base_n, exponent_m = user_input
+#
+#             # convert exponent_m to superscript style view (2³)
+#             superscript_exponent = ""
+#             for exponent_digit in str(exponent_m):
+#                 superscript_exponent = superscript_exponent + superscript_map[exponent_digit]
+#
+#             print(f'You have entered base number n = {base_n}, exponent m = {exponent_m} : {base_n}{superscript_exponent}')
+#         except ValueError:
+#             again = input('Something went wrong! Input should be like this: 2, 3. Try again? y/n: ')
+#             if again == 'y':
+#                 continue
+#             else:
+#                 break
+#         else:
+#             # check whether user input consist of positive integers
+#             if base_n <= 0 or exponent_m <= 0:
+#                 again = input('Integers are less or equal to 0! Input should be like this: 2, 3. Try again? y/n: ')
+#                 if again == 'y':
+#                     continue
+#                 else:
+#                     break
+#
+#         def recursive_exponent(base, exponent):
+#             """Recursive calculation power of integer"""
+#             if exponent == 1:
+#                 return base
+#             next_call = recursive_exponent(base, exponent=exponent - 1)
+#             next_call = next_call * base
+#             return next_call
+#
+#         result = recursive_exponent(base=base_n, exponent=exponent_m)
+#         print(f'The power of {base_n}{superscript_exponent} is {result}')
+#         return result
+#
+#
+# exponent()
+
+
+'''
+
+12. Напишите функцию, которая возводит число в отрицательную степень с помощью рекурсии.В качестве аргументов
+подаются целое положительное число n(число) и целое отрицательное число m(степень).
+
+'''
+
+
+def negative_exponent():
+    """Function recursively calculates power of integer with base number and negative exponent defined by user"""
+
+    superscript_map = {
+        "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶",
+        "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻"}
+
     result = 0
 
-
-
     while True:
-        user_input = input('Enter base integer n, exponent - integer m separated by comma. Example: 2, 3: ')
+        user_input = input('Please enter base number n, negative exponent - integer m separated by comma. '
+                           'Example: 2, -3: ')
 
         # check whether user input consist of integers
         try:
             user_input = user_input.split(',')
             user_input = [int(i) for i in user_input]
             base_n, exponent_m = user_input
-            print(f'You have entered: base n = {base_n}, exponent m = {exponent_m}')
+            exponent_m = abs(exponent_m)
+
+            # convert exponent_m to superscript style view (2³)
+            superscript_exponent = "⁻"
+            for exponent_digit in str(exponent_m):
+                superscript_exponent = superscript_exponent + superscript_map[exponent_digit]
+
+            print(f'You have entered base number n = {base_n}, exponent m = {exponent_m} : '
+                  f'{base_n}{superscript_exponent}')
         except ValueError:
             again = input('Something went wrong! Input should be like this: 2, 3. Try again? y/n: ')
             if again == 'y':
@@ -373,36 +448,32 @@ def exponent():
             else:
                 break
         else:
-            # check whether user input consist of positive integers
-            if base_n <= 0 or exponent_m <= 0:
-                again = input('Integers are less or equal to 0! Input should be like this: 2, 3. Try again? y/n: ')
+            # check whether base n is > 0
+            if base_n <= 0:
+                again = input('Base is less or equal to 0! Input should be like this: 2, -3. Try again? y/n: ')
                 if again == 'y':
                     continue
                 else:
                     break
 
-
-        def recursive_exponent(base, exponent):
+        def recursive_negative_exponent(base, exponent):
             """Recursive calculation power of integer"""
-            if exponent == 0:
-                return base * base
-            next_call = recursive_exponent(base, exponent=exponent - 1)
-            next_call = next_call + base * base
-            print(next_call)
+            if exponent == 1:
+                return base
+            next_call = recursive_negative_exponent(base, exponent=exponent - 1)
+            next_call = next_call * base
             return next_call
 
-        recursive_exponent(base=base_n, exponent=exponent_m)
+        result = recursive_negative_exponent(base=base_n, exponent=exponent_m)
+        result_division = 1 / result
+        print(f'The power of {base_n}{superscript_exponent} is 1/{result} or {result_division}')
+        return result
 
 
-exponent()
+negative_exponent()
 
 
 '''
-
-12. Напишите функцию, которая возводит число в отрицательную степень число с помощью рекурсии.В качестве аргументов
-подаются целое положительное число n(число) и целое отрицательное число m(степень).
-
-### YOUR CODE HERE ###
 ​
 ​
 13. Напишите функцию, которая находит число Фиббоначи по его номеру.В качестве аргумента подается целое положительное
