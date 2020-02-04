@@ -12,12 +12,12 @@ from random import choice, randint
 #         return 'Lemming ' + self.name + ' with tail length ' + str(self.tail_length)
 #
 #
-# # check class attribute tail_length
+# # check tail_length class attribute
 # print('class attribute tail_length: ', Lemming.tail_length)
 #
 # new_lemming = Lemming()
 # # when call attribute "tail_length" through instance, firstly Python look for such attribute in instance, and if don't
-# # find it there go further and look for attribute "tail_length" in class. If instance has its own attribute
+# # find it there go further and look for that attribute in class. If instance has its own attribute
 # # "tail_length" this instance attribute overlays class attribute.
 # print('instance attribute tail_length: ', new_lemming.tail_length)
 # print(new_lemming)

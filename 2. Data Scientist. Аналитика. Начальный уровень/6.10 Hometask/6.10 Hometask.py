@@ -4,6 +4,8 @@
 1. Почему возникла ошибка? Объясните и исправьте.
 
 '''
+import os
+
 
 def factorial(n):
     f = 1
@@ -414,63 +416,63 @@ def to_buy(*new_items, shopping_list=None):
 '''
 
 
-def negative_exponent():
-    """Function recursively calculates power of integer with base number and negative exponent defined by user"""
-
-    superscript_map = {
-        "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶",
-        "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻"}
-
-    result = 0
-
-    while True:
-        user_input = input('Please enter base number n, negative exponent - integer m separated by comma. '
-                           'Example: 2, -3: ')
-
-        # check whether user input consist of integers
-        try:
-            user_input = user_input.split(',')
-            user_input = [int(i) for i in user_input]
-            base_n, exponent_m = user_input
-            exponent_m = abs(exponent_m)
-
-            # convert exponent_m to superscript style view (2³)
-            superscript_exponent = "⁻"
-            for exponent_digit in str(exponent_m):
-                superscript_exponent = superscript_exponent + superscript_map[exponent_digit]
-
-            print(f'You have entered base number n = {base_n}, exponent m = {exponent_m} : '
-                  f'{base_n}{superscript_exponent}')
-        except ValueError:
-            again = input('Something went wrong! Input should be like this: 2, 3. Try again? y/n: ')
-            if again == 'y':
-                continue
-            else:
-                break
-        else:
-            # check whether base n is > 0
-            if base_n <= 0:
-                again = input('Base is less or equal to 0! Input should be like this: 2, -3. Try again? y/n: ')
-                if again == 'y':
-                    continue
-                else:
-                    break
-
-        def recursive_negative_exponent(base, exponent):
-            """Recursive calculation power of integer"""
-            if exponent == 1:
-                return base
-            next_call = recursive_negative_exponent(base, exponent=exponent - 1)
-            next_call = next_call * base
-            return next_call
-
-        result = recursive_negative_exponent(base=base_n, exponent=exponent_m)
-        result_division = 1 / result
-        print(f'The power of {base_n}{superscript_exponent} is 1/{result} or {result_division}')
-        return result
-
-
-negative_exponent()
+# def negative_exponent():
+#     """Function recursively calculates power of integer with base number and negative exponent defined by user"""
+#
+#     superscript_map = {
+#         "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶",
+#         "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻"}
+#
+#     result = 0
+#
+#     while True:
+#         user_input = input('Please enter base number n, negative exponent - integer m separated by comma. '
+#                            'Example: 2, -3: ')
+#
+#         # check whether user input consist of integers
+#         try:
+#             user_input = user_input.split(',')
+#             user_input = [int(i) for i in user_input]
+#             base_n, exponent_m = user_input
+#             exponent_m = abs(exponent_m)
+#
+#             # convert exponent_m to superscript style view (2³)
+#             superscript_exponent = "⁻"
+#             for exponent_digit in str(exponent_m):
+#                 superscript_exponent = superscript_exponent + superscript_map[exponent_digit]
+#
+#             print(f'You have entered base number n = {base_n}, exponent m = {exponent_m} : '
+#                   f'{base_n}{superscript_exponent}')
+#         except ValueError:
+#             again = input('Something went wrong! Input should be like this: 2, 3. Try again? y/n: ')
+#             if again == 'y':
+#                 continue
+#             else:
+#                 break
+#         else:
+#             # check whether base n is > 0
+#             if base_n <= 0:
+#                 again = input('Base is less or equal to 0! Input should be like this: 2, -3. Try again? y/n: ')
+#                 if again == 'y':
+#                     continue
+#                 else:
+#                     break
+#
+#         def recursive_negative_exponent(base, exponent):
+#             """Recursive calculation power of integer"""
+#             if exponent == 1:
+#                 return base
+#             next_call = recursive_negative_exponent(base, exponent=exponent - 1)
+#             next_call = next_call * base
+#             return next_call
+#
+#         result = recursive_negative_exponent(base=base_n, exponent=exponent_m)
+#         result_division = 1 / result
+#         print(f'The power of {base_n}{superscript_exponent} is 1/{result} or {result_division}')
+#         return result
+#
+#
+# negative_exponent()
 
 
 '''
@@ -478,6 +480,91 @@ negative_exponent()
 ​
 13. Напишите функцию, которая находит число Фиббоначи по его номеру.В качестве аргумента подается целое положительное
 число n(число).
-
-### YOUR CODE HERE ###
 '''
+
+
+def fibonacci():
+    """Function recursively defines fibonacci sequence number defined by user
+    first number of sequence takes as 1, not 0"""
+
+    result = 0
+
+    while True:
+        user_input = input('Please enter one serial number n of Fibonacci sequence: ')
+
+        # check whether user input consist of integers
+        try:
+            number_n = abs(int(user_input))
+
+            print(f'You have entered Fibonacci sequence serial number n = {number_n}')
+        except ValueError:
+            again = input('Something went wrong! Input should be like this: 1. Try again? y/n: ')
+            if again == 'y':
+                continue
+            else:
+                break
+
+        def fibonacci_file(read=None, write=None, fib_sec=None):
+            file_path = "fibonacci.txt"
+            # if file exist
+            if write:
+                f = open('fibonacci.txt', 'w')
+                for index in fib_sec:
+                    f.write(str(index))
+                f.close()
+                print('File saved!')
+
+            if read:
+                if os.path.isfile(file_path):
+                    f = open("fibonacci.txt")
+                    print(f, type(f))
+                    return f
+            else:
+                return None
+
+        def fibonacci_sequence(n):
+            """Recursive calculation of Fibonacci sequence"""
+            if n == 0 or n == 1:
+                fib_seq = [0, 1]
+                return fib_seq
+            next_call = fibonacci_sequence(n=n - 1)
+            next_fib_number = next_call[len(next_call) - 2] + next_call[len(next_call) - 1]
+            next_call.append(next_fib_number)
+            return next_call
+
+        fibonacci_file_sequence = fibonacci_file(read=True)
+        if fibonacci_file_sequence is None:
+            result = fibonacci_sequence(n=number_n)
+            print(f'The Fibonacci sequence serial number n {number_n} is {result[number_n]}')
+            print(result)
+            fibonacci_file(write=True, fib_sec=result)
+        return result
+
+
+fibonacci()
+
+
+
+
+
+
+
+# def fibonacci(number_n):
+#
+#     def fibonacci_sequence(n):
+#         """Recursive calculation of Fibonacci sequence"""
+#         if n == 0 or n == 1:
+#             fib_seq = [0, 1]
+#             return fib_seq
+#         next_call = fibonacci_sequence(n=n - 1)
+#         next_fib_number = next_call[len(next_call) - 2] + next_call[len(next_call) - 1]
+#         next_call.append(next_fib_number)
+#         return next_call
+#
+#     result = fibonacci_sequence(n=number_n)
+#     print(f'The Fibonacci sequence serial number n {number_n} is {result[number_n]}')
+#     return result
+#
+# for i in range(100):
+#     print()
+#     print(fibonacci(i))
