@@ -505,20 +505,26 @@ def fibonacci():
                 break
 
         def fibonacci_file(read=None, write=None, fib_sec=None):
+            """Function saves Fibonacci sequence to file and read during next call"""
             file_path = "fibonacci.txt"
-            # if file exist
+
             if write:
                 f = open('fibonacci.txt', 'w')
-                for index in fib_sec:
-                    f.write(str(index))
+                for digit in fib_sec:
+                    f.write(str(digit) + ',')
                 f.close()
                 print('File saved!')
+                return
 
             if read:
+                # if file exist
                 if os.path.isfile(file_path):
                     f = open("fibonacci.txt")
-                    print(f, type(f))
-                    return f
+                    saved_fib_seq = f.read().split(',')
+                    # check for last empty item in saved Fibonacci list
+                    if saved_fib_seq[-1] == '':
+                        saved_fib_seq.pop()
+                    return saved_fib_seq
             else:
                 return None
 
@@ -532,39 +538,25 @@ def fibonacci():
             next_call.append(next_fib_number)
             return next_call
 
+        # trying to read previously saved Fibonacci sequence
         fibonacci_file_sequence = fibonacci_file(read=True)
-        if fibonacci_file_sequence is None:
+        if fibonacci_file_sequence is None:  # if no Fibonacci sequence in file / no file at all
             result = fibonacci_sequence(n=number_n)
+            print('result: ', result)
             print(f'The Fibonacci sequence serial number n {number_n} is {result[number_n]}')
-            print(result)
+            # write Fibonacci sequence with max number "number_n" to file for next call
             fibonacci_file(write=True, fib_sec=result)
+        else:
+            # check whether "number_n" sequence number is in previously saved in file Fibonacci sequence
+            if (len(fibonacci_file_sequence) + 1) < number_n:
+                result = fibonacci_sequence(n=number_n)
+                print(f'The Fibonacci sequence serial number n {number_n} is {result[number_n]}')
+                # write Fibonacci sequence with max number "number_n" to file for next call
+                fibonacci_file(write=True, fib_sec=result)
+            print(f'The Fibonacci sequence serial number n {number_n} is {result[number_n]}')
         return result
 
 
 fibonacci()
 
 
-
-
-
-
-
-# def fibonacci(number_n):
-#
-#     def fibonacci_sequence(n):
-#         """Recursive calculation of Fibonacci sequence"""
-#         if n == 0 or n == 1:
-#             fib_seq = [0, 1]
-#             return fib_seq
-#         next_call = fibonacci_sequence(n=n - 1)
-#         next_fib_number = next_call[len(next_call) - 2] + next_call[len(next_call) - 1]
-#         next_call.append(next_fib_number)
-#         return next_call
-#
-#     result = fibonacci_sequence(n=number_n)
-#     print(f'The Fibonacci sequence serial number n {number_n} is {result[number_n]}')
-#     return result
-#
-# for i in range(100):
-#     print()
-#     print(fibonacci(i))
