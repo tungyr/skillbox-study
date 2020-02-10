@@ -24,8 +24,8 @@ class Sphinx(Cat):
     woolliness = 1
 
 
-murzik = Bobtail(name='Мурзик')
-sonya = Sphinx(name='Соня')
+murzik = Bobtail(name='Murzik')
+sonya = Sphinx(name='Son\'ka')
 print(murzik)
 print(sonya)
 

@@ -558,10 +558,6 @@ def to_buy(*new_items, shopping_list=None):
 # fibonacci()
 
 
-# Я сделал две версии программы. Первая, закомментированная, сохраняет значение ряда Фибоначчи в файл для повторного ипользования.
-# Наверное это может быть полезно для сохранения времени выполнения программы при работе с большими объемами данных, не знаю.
-# Так или иначе мне хотелось продемонстрировать код обеих программ:)
-
 def fibonacci():
     """Function recursively defines fibonacci sequence number defined by user.
     First number of sequence takes as 1, not 0"""

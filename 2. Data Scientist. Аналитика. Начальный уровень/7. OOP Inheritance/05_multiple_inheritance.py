@@ -124,11 +124,10 @@ class Robot:
         self.model = model
 
     def __str__(self):
-        res = super().__str__()
-        return res + ' {} model {}'.format(self.__class__.__name__, self.model)
+        return '{} model {}'.format(self.__class__.__name__, self.model)
 
     def operate(self):
-        print('Робот ездит по кругу')
+        print('Class Robot def operate: Робот ездит по кругу')
 
 
 class CanFly:
@@ -141,6 +140,7 @@ class CanFly:
     def take_off(self):
         self.altitude = 100
         self.velocity = 300
+        print(f'Полетели! Высота {self.altitude}, Скорость {self.velocity}')
 
     def fly(self):
         self.altitude = 5000
@@ -148,35 +148,46 @@ class CanFly:
     def land_on(self):
         self.altitude = 0
         self.velocity = 0
+        print('Flight is over')
+
+    def __str__(self):
+        return '{} высота {} скорость {}'.format(
+            self.__class__.__name__, self.altitude, self.velocity)
 
     def operate(self):
         super().operate()
-        print('летим')
-
-    def __str__(self):
-        res = super().__str__()
-        return res + ' {} высота {} скорость {}'.format(
-            self.__class__.__name__, self.altitude, self.velocity)
+        print('Class CanFly def operate: Летим')
 
 
 class Drone(CanFly, Robot, ):
 
     def __init__(self, model, gun):
-        super().__init__(model=model)
+        super(Drone, self).__init__(model=model)
         self.gun = gun
 
     def operate(self):
         super().operate()
-        print('Робот ведет разведку с воздуха')
+        print('Class Drone def operate: Робот ведет разведку с воздуха')
+
+    def __str__(self):
+        return '{} - model {} '.format(self.__class__.__name__, self.model) + '{} высота {} скорость {}'.format(
+            self.__class__.__name__, self.altitude, self.velocity)
 
 
-orbiter = Drone(model='Orbiter II', gun='пулемет')
+print('====0====', '\n')
+orbiter = Drone(model='Orbiter II', gun='turrel')
 print(orbiter)
+print('====1====', '\n')
 orbiter.take_off()
+print('====2====', '\n')
 print(orbiter)
+print('====3====', '\n')
 orbiter.fly()
+print('====4====', '\n')
 print(orbiter)
+print('====5====', '\n')
 orbiter.operate()
+print('====6====', '\n')
 print(orbiter)
+print('====7====', '\n')
 orbiter.land_on()
-print(orbiter)

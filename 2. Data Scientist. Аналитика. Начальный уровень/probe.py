@@ -1,38 +1,32 @@
-# -*- coding: utf-8 -*-
+draft_lines = (2, 2, 0, 2, 2, 2)
 
-# Ко всем ли атрибутам родительского класса можно обратиться?
-
-
-class Parent:
-    class_var_1 = 12
-    _class_var_2 = 23
-    __class_var_3 = 34
-
-    def __init__(self):
-        self.var_1 = 45
-        self._var_2 = 56
-        self.__var_3 = 67
-
-    def parent_method(self):
-        print(self.class_var_1)
-        print(self._class_var_2)
-        print(self.__class_var_3)
-        print(self.var_1)
-        print(self._var_2)
-        print(self.__var_3)
+stores_lines = (200, 200, 200, 200, 200, 200)
 
 
-class Child(Parent):
 
-    def method(self):
-        print(self.class_var_1)
-        print(self._class_var_2)
-        # print(self.__class_var_3)
-        print(self.var_1)
-        print(self._var_2)
-        # print(self.__var_3)
+# self.ui.countBtn.clicked.connect(self.calculate)
 
 
-obj = Child()
-# obj.parent_method()
-obj.method()
+def validate_forms(draft_lines, stores_lines):
+    draft_lines = [float(draft_line) for draft_line in draft_lines]
+    for draft_line in draft_lines:
+        if draft_line not in {2, 7.8}:
+            print(draft_line, 'wrong!')
+            print("Applicable draft values only: 2 - 7.8"
+                  + "\n" +
+                  "Applicable density values only: 0.1 - 2"
+                  + "\n")
+        # warn = QMessageBox.warning(self, 'Message',
+        #                            "Applicable draft values only: 2 - 7.8"
+        #                            + "\n" +
+        #                            "Applicable density values only: 0.1 - 2"
+        #                            + "\n", QMessageBox.Ok)
+
+            return None
+
+
+    draft_lines = [float(draft_line) for draft_line in draft_lines]
+    for i in draft_lines:
+        print(type(i))
+
+validate_forms(draft_lines, stores_lines)
