@@ -240,6 +240,7 @@ bea_luna.route = valvik_albany
 print(bea_luna)
 bea_luna.act()
 print(bea_luna.hfo, bea_luna.mgo)
+print('subclasses:', Ship.__subclasses__())
 
 
 
