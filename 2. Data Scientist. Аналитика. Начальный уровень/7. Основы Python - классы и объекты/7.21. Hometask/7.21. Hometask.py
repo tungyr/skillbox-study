@@ -80,7 +80,7 @@ hasattr()
 
 
 class Fraction:
-    """Class of fraction consits of numerator a and denominator b"""
+    """Class of fraction consist of numerator a and denominator b(which is 1 by default)"""
 
     def __init__(self, numerator_a, denominator_b=1):
         # validate numerator and denominator
@@ -88,13 +88,13 @@ class Fraction:
             numerator_a = int(numerator_a)
         except ValueError:
             print(f'Numerator {numerator_a} is not an integer!')
-            return
+            raise
 
         try:
             denominator_b = int(denominator_b)
         except ValueError:
             print(f'Denominator {denominator_b} is not an integer!')
-            return
+            raise
 
         self.numerator_a = numerator_a
         self.denominator_b = denominator_b
@@ -103,60 +103,147 @@ class Fraction:
     def __str__(self):
         return f'{self.__class__.__name__} {self.fraction}'
 
-    def least_common_multiple(self, other_denominator):
+    def least_common_multiple_func(self, other_denominator) -> int:
+        """The least common multiple defining"""
         least_common_mult = self.denominator_b
         while (least_common_mult % self.denominator_b + least_common_mult % other_denominator) != 0:
             least_common_mult += 1
         return least_common_mult
 
-    def __add__(self, other):
+    def common_divisor(self, numerator_a, denominator_b) -> [None, int]:
+        """A common divisor defining"""
+        divisors = []
+        for divisor in range(2, max(numerator_a, denominator_b)):
+            if max(numerator_a, denominator_b) % divisor == 0:
+                divisors.append(divisor)
+        for divisor in range(2, min(numerator_a, denominator_b)):
+            if min(numerator_a, denominator_b) % divisor == 0:
+                if divisor in divisors:
+                    return divisor
+        return None
+
+    def __add__(self, other) -> object:
+        """Addition of two fractions"""
         least_common_multiple = self.denominator_b
         # check denominators of fractions and if no define their least common multiple
         if self.denominator_b != other.denominator_b:
-            least_common_multiple = self.least_common_multiple(other.denominator_b)
+            least_common_multiple = self.least_common_multiple_func(other.denominator_b)
 
         common_numerator = (least_common_multiple / self.denominator_b * self.numerator_a) + \
-                       (least_common_multiple / other.denominator_b * other.numerator_a)
-        # if common_numerator % least_common_multiple == 0:
-        #     common_numerator = common_numerator / least_common_multiple
-        res = Fraction(common_numerator, least_common_multiple)
+                           (least_common_multiple / other.denominator_b * other.numerator_a)
 
+        # check for common divisor
+        common_divisor = self.common_divisor(int(common_numerator), least_common_multiple)
+        if common_divisor is None:
+            res = Fraction(common_numerator, least_common_multiple)
+        else:
+            common_numerator = common_numerator / common_divisor
+            least_common_multiple = least_common_multiple / common_divisor
+            res = Fraction(common_numerator, int(least_common_multiple))
         return res
 
-    def __sub__(self, other):
+    def __sub__(self, other) -> object:
+        """Substitution of two fractions"""
         least_common_multiple = self.denominator_b
         # check denominators of fractions and if no define their least common multiple
         if self.denominator_b != other.denominator_b:
-            least_common_multiple = self.least_common_multiple(other.denominator_b)
+            least_common_multiple = self.least_common_multiple_func(other.denominator_b)
 
         common_numerator = (least_common_multiple / self.denominator_b * self.numerator_a) - \
                            (least_common_multiple / other.denominator_b * other.numerator_a)
-        # if common_numerator % least_common_multiple == 0:
-        #     common_numerator = common_numerator / least_common_multiple
-        res = Fraction(common_numerator, least_common_multiple)
 
+        # check for common divisor
+        common_divisor = self.common_divisor(int(common_numerator), least_common_multiple)
+        if common_divisor is None:
+            res = Fraction(common_numerator, least_common_multiple)
+        else:
+            common_numerator = common_numerator / common_divisor
+            least_common_multiple = least_common_multiple / common_divisor
+            res = Fraction(common_numerator, int(least_common_multiple))
         return res
 
-    def __mul__(self, other):
+    def __mul__(self, other) -> object:
+        """Multiplication of two fractions"""
         common_numerator = self.numerator_a * other.numerator_a
         common_denominator = self.denominator_b * other.denominator_b
-        # if common_numerator % least_common_multiple == 0:
-        #     common_numerator = common_numerator / least_common_multiple
-        res = Fraction(common_numerator, common_denominator)
 
+        # check for common divisor
+        common_divisor = self.common_divisor(int(common_numerator), common_denominator)
+        if common_divisor is None:
+            res = Fraction(common_numerator, common_denominator)
+        else:
+            common_numerator = common_numerator / common_divisor
+            common_denominator = common_denominator / common_divisor
+            res = Fraction(common_numerator, int(common_denominator))
         return res
 
+    def __int__(self) -> int:
+        """Returns int number from fraction"""
+        integer_number = self.numerator_a // self.denominator_b
+        print(f'Fraction {self.fraction} integer number is {integer_number}')
+        return integer_number
+
+    def __float__(self) -> float:
+        """Returns float number from fraction"""
+        float_number = self.numerator_a / self.denominator_b
+        print(f'Fraction {self.fraction} float number is {float_number}')
+        return float_number
+
+
+class OperationsOnFraction(Fraction):
+    """Converting fractions to int and float types"""
+    def __init__(self, numerator_a=0, denominator_b=0):
+        super().__init__(numerator_a=numerator_a, denominator_b=denominator_b)
+
+    def getint(self, fraction) -> int:
+        """Returns int number from fraction based on base class __int__() method"""
+        self.numerator_a = fraction.numerator_a
+        self.denominator_b = fraction.denominator_b
+        self.fraction = str(self.numerator_a) + '/' + str(self.denominator_b)
+        return super().__int__()
+
+
+    def getfloat(self, fraction) -> float:
+        """Returns float number from fraction based on base class __float__() method"""
+        self.numerator_a = fraction.numerator_a
+        self.denominator_b = fraction.denominator_b
+        self.fraction = str(self.numerator_a) + '/' + str(self.denominator_b)
+        return super().__float__()
 
 
 
 
-my_fraction = Fraction(6, 9)
-other_fraction = Fraction(5, 8)
-print(my_fraction)
-print(other_fraction)
+
+
+my_fraction = Fraction(9, 2)
+other_fraction = Fraction(8, 3)
+# print(my_fraction)
+# print(other_fraction)
 summ = my_fraction + other_fraction
-print('summ:', summ)
+# print('summ:', summ)
 subs = my_fraction - other_fraction
-print('subs:', subs)
-mult = my_fraction * other_fraction
-print('mult:', mult)
+# print('subs:', subs)
+# mult = my_fraction * other_fraction
+# print('mult:', mult)
+#
+# print()
+# integer_summ = int(summ)
+# integer_subs = int(subs)
+# integer_mult = int(mult)
+#
+# print()
+# float_summ = float(summ)
+# float_subs = float(subs)
+# float_mult = float(mult)
+
+print()
+operations = OperationsOnFraction()
+
+
+get_integer_summ = operations.getint(summ)
+get_float_subs = operations.getfloat(subs)
+
+
+
+
+
