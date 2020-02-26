@@ -43,19 +43,35 @@ DeprecationWarning используется в библиотеках при в�
 
 def div():
     for i in range(2):
-        x = int(input("enter a number: "))
-        y = int(input("enter another number: "))
-        print(x, '/', y, '=', x / y)
+        x = input("enter a number: ")
+        y = input("enter another number: ")
+        try:
+            x, y = int(x), int(y)
+            print(x, '/', y, '=', x / y)
+        except ValueError as exc:
+            print(f'Error: {exc.args} \nx and y must be integers!')
+        except ZeroDivisionError as exc:
+            print(f'Error: {exc.args} \nSecond number must be greater then 0!')
+
+# div()
 
 
 def sumOfPairs(L1, L2):
-    sum = 0
-    sumOfPairs = []
-    for i in range(len(L1)):
-        sumOfPairs.append(L1[i] + L2[i])
+    try:
+        sum = 0
+        sumOfPairs = []
+        for i in range(len(L1)):
+            sumOfPairs.append(L1[i] + L2[i])
+        return sumOfPairs
+
+    except TypeError as exc:
+        print(f'Function parameters should be lists or strokes only:', {exc.args})
+    except IndexError as exc:
+        print(f'First function parameter length should be less then second parameter length:', {exc.args})
 
 
-print("sumOfPairs = ", sumOfPairs)
+
+sumOfPairs([1, 2], [1, 2, 3])
 
 '''
 Задание 1. 
