@@ -150,5 +150,11 @@ namespace Homework_01
         {
             this.Workers.RemoveAll(e => e.FirstName == CurrentName);//Удаление работников чьё имя Удовлетворяет выбранному CurrentName
         }
+
+        public void DeleteRandomWorker()
+        {
+            int index = Repository.randomize.Next(0, this.Workers.Count);
+            this.Workers.RemoveAt(index);//Удаление работников чьё имя Удовлетворяет выбранному CurrentName
+        }
     }
 }
