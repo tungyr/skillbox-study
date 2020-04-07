@@ -62,6 +62,36 @@ namespace _2._7_Hometask
                     Console.Clear();
                     foreach (var item in user_data_list)
                     {
+                        if (name.Length > Program.separator.Length)
+                        {
+                            Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
+                            Console.WriteLine("Имя: ");
+                            string word = "";
+                            char[] name_chars = name.ToCharArray();
+                            foreach (char x in name_chars)
+                            {
+                                
+                                if (word.Length > Program.separator.Length)
+                                {
+                                    if (Char.IsWhiteSpace(x))
+                                    {
+                                        Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
+                                        Console.WriteLine(word);
+                                        word = "";
+                                        row_number += 1;
+                                    }
+                                }
+                                else
+                                {                                   
+                                    word += x.ToString();
+                                }
+                            }
+
+
+                           
+
+                        }
+
                         Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
                         Console.WriteLine(item);
                         row_number++;
