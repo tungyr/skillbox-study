@@ -51,7 +51,6 @@ namespace _2._7_Hometask
                 Console.Clear();
                 int menu_string = 0;
 
-
                 foreach (var item in main_menu)
                 {
                     Console.SetCursorPosition((win_width - (separator.Length / 2)), win_height - 5 + menu_string);
