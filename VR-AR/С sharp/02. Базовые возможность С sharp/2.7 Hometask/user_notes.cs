@@ -24,15 +24,16 @@ namespace _2._7_Hometask
 
         public static void user_notes_main()
         {
-            //Проверка изменения размера окна консоли
-            if (Console.WindowHeight / 2 != Program.win_height || Console.WindowWidth != Program.win_width)
-            {
-                Program.win_height = Console.WindowHeight / 2;
-                Program.win_width = Console.WindowWidth / 2;
-            }
+
 
             while (true)
             {
+                //Проверка изменения размера окна консоли
+                if (Console.WindowHeight / 2 != Program.win_height || Console.WindowWidth != Program.win_width)
+                {
+                    Program.win_height = Console.WindowHeight / 2;
+                    Program.win_width = Console.WindowWidth / 2;
+                }
 
                 Console.Clear();
                 // Вывод главного меню заметок
@@ -69,19 +70,37 @@ namespace _2._7_Hometask
                 
                     else
                     {
+                        int note_number = 1;
+                        row_number = 0;
                         foreach (var note in notes)
                         {
-                            Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
-                            Console.WriteLine(row_number + 1 + ". " + note);
-                            // Проверка длины заметки
-                            if (note.Length > Program.win_width)
+                            //вывод заметки
+
+                            string note_line = $"{note_number}.  ";
+                            note.Split(" ");
+                            foreach (char letter in note)
                             {
-                                row_number = note.Length / Program.win_width;
-                                row_number++;
+                                if (Char.IsWhiteSpace(letter))
+                                {
+                                    if (note_line.Length >= Program.separator.Length)
+                                    {
+                                        row_number++;
+                                        note_line += letter;
+                                        Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
+                                        Console.WriteLine(note_line);
+                                        note_line = "";
+                                        continue;
+                                    }
+                                }
+                                note_line += letter;
                             }
+                            // вывод последней части заметки
                             row_number++;
+                            Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
+                            Console.WriteLine(note_line);
+                            note_number++;
                         }
-                        Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 2 + row_number);
+                        Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 1 + row_number);
                         Console.WriteLine("Чтобы вернуться назад нажмите Ввод");
                         if (Console.ReadKey().KeyChar == 13)
                         {
@@ -98,16 +117,17 @@ namespace _2._7_Hometask
                 {
                     Console.Clear();
 
+
                     Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3);
                     Console.WriteLine("Введите заметку: ");
                     Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 2);
                     string new_note = Console.ReadLine();
                     notes.Add(new_note);
 
-                    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height + new_note.Length / Program.win_width);
+                    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height + new_note.Length / Console.WindowWidth);
                     Console.WriteLine("Заметка сохранена!");
 
-                    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height + new_note.Length / Program.win_width + 1);
+                    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height + new_note.Length / Console.WindowWidth + 1);
                     Console.WriteLine("Чтобы вернуться назад нажмите Ввод");
 
                     if (Console.ReadKey().KeyChar == 13)

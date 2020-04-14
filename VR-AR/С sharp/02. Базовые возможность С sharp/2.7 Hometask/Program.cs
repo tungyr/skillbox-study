@@ -35,17 +35,16 @@ namespace _2._7_Hometask
         
         public static void Main()
         {
-            //Проверка изменения размера окна консоли
-            if (Console.WindowHeight / 2 != win_height || Console.WindowWidth != win_width)
-            {
-                win_height = Console.WindowHeight / 2;
-                win_width = Console.WindowWidth / 2;
-            }
-
             /* Бесконечный цикл для постоянной работы программы 
             пока пользователь не решит выйти*/
             while (true)
                 {
+                //Проверка изменения размера окна консоли
+                if (Console.WindowHeight / 2 != Program.win_height || Console.WindowWidth != Program.win_width)
+                {
+                    Program.win_height = Console.WindowHeight / 2;
+                    Program.win_width = Console.WindowWidth / 2;
+                }
 
                 /// Основное меню записной книжки
                 Console.Clear();
@@ -83,9 +82,9 @@ namespace _2._7_Hometask
                 }
 
                 /// Выбор пункта 4 или любой символ завершает программу
-                else
+                else if (choice == 4)
                 {
-                    return;          
+                    break;         
                 }
 
             }

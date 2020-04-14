@@ -27,15 +27,15 @@ namespace _2._7_Hometask
 
         public static void user_data_main()
         {
-            //Проверка изменения размера окна консоли
-            if (Console.WindowHeight / 2 != Program.win_height || Console.WindowWidth != Program.win_width)
-            {
-                Program.win_height = Console.WindowHeight / 2;
-                Program.win_width = Console.WindowWidth / 2;
-            }
             while (true)
             {
-                string pattern_user = "Данные пользователя: Имя: {0}; Возраст: {1}; Рост: {2};\n";
+                //Проверка изменения размера окна консоли
+                if (Console.WindowHeight / 2 != Program.win_height || Console.WindowWidth != Program.win_width)
+                {
+                    Program.win_height = Console.WindowHeight / 2;
+                    Program.win_width = Console.WindowWidth / 2;
+                }
+
                 Console.Clear();
 
                 int row_number = 0;
@@ -58,66 +58,38 @@ namespace _2._7_Hometask
 
                     Console.Clear();
 
-                    if (name.Length > Program.separator.Length)
+                    //вывод имени
+
+                    string word = "Имя: ";
+                    name.Split(" ");
+                    foreach (char letter in name)
                     {
-                        string word = "";
-                        name.Split(" ");
-                        foreach (char x in name)
+                        if (Char.IsWhiteSpace(letter))
                         {
-                            if (Char.IsWhiteSpace(x)) 
+                            if (word.Length >= Program.separator.Length)
                             {
-                                if (word.Length >= Program.separator.Length)
-                                {
-                                    row_number++;
-                                    word += x;
-                                    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
-                                    Console.WriteLine(word);
-                                    word = "";
-                                }
-
-                            
-                             
-                         
-                            
+                                row_number++;
+                                word += letter;
+                                Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
+                                Console.WriteLine(word);
+                                word = "";
+                                continue;
                             }
-                            word += x;
                         }
-
-
-                        //if (name.Length > Program.separator.Length)
-                        //{
-                        //    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
-                        //    Console.WriteLine("Имя: ");
-                        //    string word = "";
-                        //    char[] name_chars = name.ToCharArray();
-                        //    foreach (char x in name_chars)
-                        //    {
-                        //        if (word.Length >= Program.separator.Length)
-                        //        {
-                        //            if (Char.IsWhiteSpace(x))
-                        //            {
-                        //                row_number++;
-                        //                word += x.ToString();
-                        //                Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
-                        //                Console.WriteLine(word);
-                        //                word = "";
-                        //            }
-                        //        }
-                        //        else
-                        //        {                                   
-                        //            word += x.ToString();
-                        //        }
-                        //    }
+                        word += letter;
                     }
-
+                    // вывод последней части имени
                     row_number++;
                     Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 3 + row_number);
-                    Console.WriteLine($"Возраст: {age,1}");
+                    Console.WriteLine(word);
+ 
                     Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 2 + row_number);
+                    Console.WriteLine($"Возраст: {age,1}");
+                    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 1 + row_number);
                     Console.WriteLine($"Рост: {height,4}");
                     
 
-                    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height - 1 + row_number);
+                    Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height + row_number);
                     Console.WriteLine("Чтобы вернуться назад нажмите Ввод");
                     Console.SetCursorPosition((Program.win_width - (Program.separator.Length / 2)), Program.win_height + row_number);
                     if (Console.ReadKey().KeyChar == 13)

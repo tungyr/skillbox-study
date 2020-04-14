@@ -44,15 +44,16 @@ namespace _2._7_Hometask
 
         public static void user_marks_main()
         {
-            //Проверка изменения размера окна консоли
-            if (Console.WindowHeight / 2 != Program.win_height || Console.WindowWidth != Program.win_width)
-            {
-                Program.win_height = Console.WindowHeight / 2;
-                Program.win_width = Console.WindowWidth / 2;
-            }
 
             while (true)
             {
+                //Проверка изменения размера окна консоли
+                if (Console.WindowHeight / 2 != Program.win_height || Console.WindowWidth != Program.win_width)
+                {
+                    Program.win_height = Console.WindowHeight / 2;
+                    Program.win_width = Console.WindowWidth / 2;
+                }
+
                 string pattern_marks = "Введенные оценки: История: {0}; Математика: {1}; Русский язык: {2}; Средний балл: {3}";
 
                 int row_number = 0;
