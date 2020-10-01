@@ -1,5 +1,7 @@
 __pycache__/
 *.pdf
+/shandrinov_study/venv
+/shandrinov_study/.idea
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
