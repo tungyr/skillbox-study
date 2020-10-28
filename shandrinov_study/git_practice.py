@@ -16,4 +16,4 @@ print('Hello world!', res)
 ++++++++++++++++++
 ++++++++++++++++++
 ++++++++++++++++++
-# NOT MASTER
+# NOT MASTER, NOT MINUSES
