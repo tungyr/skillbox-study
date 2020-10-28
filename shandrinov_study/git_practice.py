@@ -4,6 +4,7 @@ a = 2
 b = 3
 
 def summ():
+    print('This is summ')
     return a + b
 
 res = summ()
