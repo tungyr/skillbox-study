@@ -10,6 +10,7 @@ def summ():
 res = summ()
 print('Hello world!', res)
 
+# THIS IS PLUSSES!
 ++++++++++++++++++
 ++++++++++++++++++
 ++++++++++++++++++
