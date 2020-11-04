@@ -10,6 +10,7 @@ def summ():
 res = summ()
 print('Hello world!', res)
 
+
 #THIS IS MASTER
 .................
 .................
@@ -20,3 +21,12 @@ print('Hello world!', res)
 
 # changed line from comp
 # new line from remote repository
+
+# THIS IS PLUSSES!
+++++++++++++++++++
+++++++++++++++++++
+++++++++++++++++++
+++++++++++++++++++
+++++++++++++++++++
+# NOT MASTER, NOT MINUSES
+
